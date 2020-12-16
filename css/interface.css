@@ -191,7 +191,7 @@
   padding-left: calc(1vw + 1vh);
   font-size: calc(8px + 0.8vw + 0.8vh);
 }
-@media screen and (max-width: 1400px) {
+/*@media screen and (max-width: 1400px) {
   #content{
   	flex-direction: column;
   }
@@ -199,4 +199,4 @@
   #infos_match{
   	margin: calc(2vw + 2vh);
   }
-}
+}*/
