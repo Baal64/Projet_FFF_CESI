@@ -1,25 +1,37 @@
 <?php
-	//On lance la session et on récupère les paramètres s'ils existent
-	session_start();
 
-	//Inclusions des fichiers utiles
-    include('./Modeles/Manager.php');
+    //On lance la session et on récupère les paramètres s'ils existent
+    session_start();
 
-	include('./php/class_sql.php');
-	include('./php/fonctions.php');
-	include('./Modeles/Joueur.php');
-	include('./Modeles/JoueurManager.php');
-    include('./Modeles/Arbitre.php');
-    include('./Modeles/ArbitreManager.php');
-    include('./Modeles/Utilisateur.php');
-    include('./Modeles/UtilisateurManager.php');
+    //Inclusions des fichiers utiles
+    include('./php/class_sql.php');
+    include('./php/fonctions.php');
+
+    // Fonction de chargement de classe
+    function chargerClass($className){
+    require_once('./Modeles/'.$className.'.php');
+    }
+
+    spl_autoload_register('chargerClass');
 
 
-	//On créer l'objet de connexion à la base de données
-	$objsql = new sql();
+    // include('./Modeles/Manager.php');
 
-	//Variables
-	$msg_connexion = "";
+
+    // include('./Modeles/Joueur.php');
+    // include('./Modeles/JoueurManager.php');
+    // include('./Modeles/Arbitre.php');
+    // include('./Modeles/ArbitreManager.php');
+    // include('./Modeles/Utilisateur.php');
+    // include('./Modeles/UtilisateurManager.php');
+
+
+    //On créer l'objet de connexion à la base de données
+    $objsql = new sql();
+
+    //Variables
+    $msg_connexion = "";
+
 
 	//Gestion de la connexion
 	if(isset($_POST['connexion']) && post_control($_POST['nom_user']) &&  post_control($_POST['mdpass'])){
@@ -60,8 +72,8 @@
 //$joueurManager = new JoueurManager();
 //var_dump($joueurManager->readAll());
 
-$utilisateurManager = new UtilisateurManager();
-var_dump($utilisateurManager->readAll());
+$equipeManager = new EquipeManager();
+var_dump($equipeManager->readAll());
 
 ?>
 <!DOCTYPE html>
