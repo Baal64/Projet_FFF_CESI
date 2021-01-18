@@ -5,6 +5,7 @@
 	if(!(isset($_SESSION['connected']) && $_SESSION['connected'])){
 		header('Location : ./connexion.php');
 	}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,59 +14,34 @@
 		<!-- Inclusion des css -->
 		<link rel="stylesheet" type="text/css" href="./css/flex_css.css">
 		<link rel="stylesheet" type="text/css" href="./css/interface.css">
+		<link rel="stylesheet" type="text/css" href="./css/libs/jquery-ui.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/libs/jquery-ui.structure.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/libs/jquery-ui.theme.min.css">
 		<!-- Inclusion des js -->
 		<script type="text/javascript" src="./js/libs/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript" src="./js/libs/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="./js/libs/knockout-3.5.1.js"></script>
 		<script type="text/javascript" src="./js/libs/iro.min.js"></script>
+		<script type="text/javascript">
+			var role_utilisateur = '<?php echo $_SESSION['role_user']; ?>';
+		</script>
 		<script type="text/javascript" src="./js/interface.js"></script>
 	</head>
 	<body>
 		<div id="wrapper" class="flex flex_col">
 			<div id="bandeau" class="flex flex_aic flex_sb">
-				<div id="utilisateur_connecte">Bonjour Thierry</div>
+				<div id="utilisateur_connecte">Bonjour <?php echo $_SESSION['prenom_user'].' '.$_SESSION['nom_user'] ?></div>
 				<div id="mainlogo"></div>
 				<form action="./connexion.php" method="post">
 					<button id="deconnexion" type="submit" name="deconnexion">Se déconnecter</button>
 				</form>
 			</div>
-			<div id="content" class="flex flex_sa flex_aic">
-				<!-- ko if : choix_couleur()>0 -->
-					<div data-bind="template : { name : 'interface_choix_couleur' }"></div>
-				<!-- /ko -->
-				<!-- ko if : joueur_selectionne() -->
-					<div data-bind="template : { name : 'interface_joueur_selectionne' }"></div>
-				<!-- /ko -->
-				<div id="equipe1" class="equipe flex flex_col flex_aic flex_sa">
-					<div class="logo_equipe" id="logoequipe_1"></div>
-					<div id="pickerequipe_1" class="choix_couleur">Couleur équipe 1</div>
-					<!-- ko template: { name : 'equipe', data : { 'equipe' : 1 } } --> <!-- /ko -->
-				</div>
-				<div id="infos_match" class="flex flex_aic flex_col flex_sa">
-					<div>Informations du match</div>
-					<div class="flex flex_col flex_aic flex_sa">
-						<div>Date</div>
-						<div>14/12/2020</div>
-						<div>Score</div>
-						<div>0 - 0</div>
-						<div>Arbitre</div>
-						<div>Jean Mouloud</div>
-						<div>Temps de jeu</div>
-						<div>90 min</div>
-						<div>Lieu</div>
-						<div>Paris - France</div>
-						<div>Stade</div>
-						<div>La pelouse de Michel</div>
-					</div>
-				</div>
-				<div id="equipe2" class="equipe flex flex_col flex_aic flex_sa">
-					<div class="logo_equipe" id="logoequipe_2"></div>
-					<div id="pickerequipe_2" class="choix_couleur">Couleur équipe 2</div>
-					<!-- ko template: { name : 'equipe', data : { 'equipe' : 2 } } --> <!-- /ko -->
-				</div>
-			</div>
+			<div id="content" class="flex flex_sa flex_aic" data-bind="template : { name : current_template() }"></div>
 		</div>
 	</body>
 </html>
+
+<!-- ............ -->
 
 <script type="text/html" id="modele_joueur">
 	<div class="maillot" data-bind="style : { backgroundColor : $data.couleur_maillot}">
@@ -143,3 +119,15 @@
 		<!-- /ko -->
 	</div>
 </script>
+
+<?php
+	//On inclu les templates
+	//Interface issue d'une connexion en tant que présentateur
+	include("./templates/accueil_presentateur.php");
+	//Interface issue d'une connexion en tant qu'entraineur
+	include("./templates/accueil_entraineur.php");
+	//Initiation de la feuille de match - présentateur
+	include("./templates/init_feuille_match.php");
+	//Feuille de match - présentateur
+	include("./templates/renseignement_feuille_match.php");
+?>
