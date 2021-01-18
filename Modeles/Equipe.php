@@ -1,7 +1,9 @@
 <?php
 
+require('Entity.php');
 
-class Equipe
-{
+class Equipe extends Entity{
+
+
 
 }
