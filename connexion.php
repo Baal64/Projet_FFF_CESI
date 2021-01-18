@@ -3,12 +3,17 @@
 	session_start();
 
 	//Inclusions des fichiers utiles
+    include('./Modeles/Manager.php');
+
 	include('./php/class_sql.php');
 	include('./php/fonctions.php');
 	include('./Modeles/Joueur.php');
 	include('./Modeles/JoueurManager.php');
     include('./Modeles/Arbitre.php');
     include('./Modeles/ArbitreManager.php');
+    include('./Modeles/Utilisateur.php');
+    include('./Modeles/UtilisateurManager.php');
+
 
 	//On créer l'objet de connexion à la base de données
 	$objsql = new sql();
@@ -55,8 +60,8 @@
 //$joueurManager = new JoueurManager();
 //var_dump($joueurManager->readAll());
 
-$arbitreManager = new ArbitreManager();
-var_dump($arbitreManager->readAll());
+$utilisateurManager = new UtilisateurManager();
+var_dump($utilisateurManager->readAll());
 
 ?>
 <!DOCTYPE html>
