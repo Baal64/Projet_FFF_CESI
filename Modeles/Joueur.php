@@ -16,12 +16,7 @@ class Joueur extends Entity
 
 
 
-    public function __construct(array $data=[])
-    {
-        if (count($data) > 0) {
-            $this->hydrate($data);
-        }
-    }
+
 
     /**
      * @return mixed

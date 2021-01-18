@@ -1,8 +1,6 @@
 <?php
 
 
-require('Entity.php');
-
 
 class Arbitre extends Entity
 {
@@ -12,13 +10,6 @@ class Arbitre extends Entity
     private $prenom_arbitre;
     private $nat_arbitre;
 
-
-    public function __construct(array $data = [])
-    {
-        if (count($data) > 0) {
-            $this->hydrate($data);
-        }
-    }
 
     /**
      * @return mixed
@@ -63,7 +54,7 @@ class Arbitre extends Entity
     /**
      * @param mixed $prenom_arbitre
      */
-    public function setprenom_arbitre()
+    public function setprenom_arbitre($prenom_arbitre)
     {
         $this->prenom_arbitre = $prenom_arbitre;
     }

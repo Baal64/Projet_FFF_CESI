@@ -20,15 +20,15 @@ class ArbitreManager
     }
 
     public function readAll(){
-        $s = "SELECT * FROM joueurs";
+        $s = "SELECT * FROM arbitres";
         $r = $this->db->query($s);
-        $joueurCollection = [];
-        while($joueurData = $r->fetch(PDO::FETCH_ASSOC)){
-            $joueur = new Joueur($joueurData);
+        $arbitreCollection = [];
+        while($arbitreData = $r->fetch(PDO::FETCH_ASSOC)){
+            $arbitre = new Arbitre ($arbitreData);
 
-            array_push($joueurCollection, $joueur);
+            array_push($arbitreCollection, $arbitre);
         }
-        return $joueurCollection;
+        return $arbitreCollection;
     }
 
 }

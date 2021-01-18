@@ -1,7 +1,7 @@
 <?php
 
 
-class Connexion
+abstract class Connexion
 {
 
     private $db;

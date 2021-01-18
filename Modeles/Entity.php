@@ -16,6 +16,7 @@ abstract class Entity{
         }
     }*/
 
+
     public function hydrate(array $infos)
     {
         foreach ($infos as $clef => $donnee) {
@@ -27,6 +28,15 @@ abstract class Entity{
                 // On appelle le setter.
                 $this->$methode($donnee);
             }
+        }
+
+
+    }
+
+    public function __construct(array $data=[])
+    {
+        if (count($data) > 0) {
+            $this->hydrate($data);
         }
     }
 
