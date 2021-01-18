@@ -5,6 +5,8 @@
 	//Inclusions des fichiers utiles
 	include('./php/class_sql.php');
 	include('./php/fonctions.php');
+	include('./Modeles/Joueur.php');
+	include('./Modeles/JoueurManager.php');
 
 	//On créer l'objet de connexion à la base de données
 	$objsql = new sql();
@@ -47,6 +49,9 @@
 	if(isset($_SESSION['connected']) && $_SESSION['connected']==true){
 		header('Location: ./index.php');
 	}
+$joueurManager = new JoueurManager();
+var_dump($joueurManager->readAll());
+
 ?>
 <!DOCTYPE html>
 <html>
