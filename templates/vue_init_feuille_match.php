@@ -9,6 +9,7 @@
                 <?php
 
                 foreach ($equipeCollection as $nomClub){
+					var_dump($nomClub->getnom_club());
                     echo '<option value="'.$nomClub->getnom_club().'", text="'.$nomClub->getnom_club().'" >'.$nomClub->getnom_club().'</option>';
 
                 } ?>

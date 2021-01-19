@@ -5,8 +5,6 @@
 class JoueurManager extends Manager
 {
 
-
-
     public function read($id_joueur){
         $s = "SELECT * FROM joueurs WHERE id_joueur = :id_joueur";
         $r = $this->db->prepare($s);
@@ -27,9 +25,5 @@ class JoueurManager extends Manager
         }
         return $joueurCollection;
     }
-
-
-
-
 
 }

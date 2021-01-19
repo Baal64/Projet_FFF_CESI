@@ -9,17 +9,7 @@ include('./php/fonctions.php');
 
 spl_autoload_register('chargerClass');
 
-// $EquipeManager = new EquipeManager();
-// $equipeCollection = $EquipeManager->readAll();
-
-// $ArbitreManager = new ArbitreManager();
-// $arbitreCollection = $ArbitreManager->readAll();
-
 $feuilleMatchManager = new FeuilleMatchManager();
 $feuilleMatchCollection = $feuilleMatchManager->readAll();
 
-
 require('./templates/vue_accueil_entraineur.php');
-
-
- 

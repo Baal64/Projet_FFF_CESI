@@ -9,13 +9,8 @@ include('./php/fonctions.php');
 
 spl_autoload_register('chargerClass');
 
-// $EquipeManager = new EquipeManager();
-// $equipeCollection = $EquipeManager->readAll();
-
-// $ArbitreManager = new ArbitreManager();
-// $arbitreCollection = $ArbitreManager->readAll();
-
-// $feuilleMatchCollection = ;
+ $joueurManager = new joueurManager();
+ $joueurCollection = $joueurManager->readAll();
 
 
 require('./templates/vue_creation_equipe_match.php');
