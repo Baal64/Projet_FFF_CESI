@@ -1,14 +1,10 @@
 <?php
 
 
-class JoueurManager
+
+class JoueurManager extends Manager
 {
 
-    private $db;
-
-    public function __construct(){
-        $this->db = new PDO('mysql:host=localhost;dbname=fff;charset=utf8','root','',[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-    }
 
 
     public function read($id_joueur){

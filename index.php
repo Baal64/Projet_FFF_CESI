@@ -6,6 +6,19 @@
 		header('Location : ./connexion.php');
 	}
 
+//Inclusions des fichiers utiles
+include('./php/class_sql.php');
+include('./php/fonctions.php');
+
+
+/*// Fonction de chargement de classe
+function chargerClass($className){
+    require_once('./Modeles/'.$className.'.php');
+}
+
+spl_autoload_register('chargerClass');
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,7 +42,7 @@
 	</head>
 	<body>
 		<div id="wrapper" class="flex flex_col">
-			<div id="bandeau" class="flex flex_aic flex_sb">
+			 <div id="bandeau" class="flex flex_aic flex_sb">
 				<div id="utilisateur_connecte">Bonjour <?php echo $_SESSION['prenom_user'].' '.$_SESSION['nom_user'] ?></div>
 				<div id="mainlogo"></div>
 				<form action="./connexion.php" method="post">
@@ -127,7 +140,7 @@
 	//Interface issue d'une connexion en tant qu'entraineur
 	include("./templates/accueil_entraineur.php");
 	//Initiation de la feuille de match - présentateur
-	include("./templates/init_feuille_match.php");
+	//include("./templates/init_feuille_match.php");
 	//Feuille de match - présentateur
 	include("./templates/renseignement_feuille_match.php");
 ?>

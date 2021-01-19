@@ -1,20 +1,24 @@
 <?php
-	//On lance la session et on récupère les paramètres s'ils existent
-	session_start();
 
-	//Inclusions des fichiers utiles
-	include('./php/class_sql.php');
-	include('./php/fonctions.php');
-	include('./Modeles/Joueur.php');
-	include('./Modeles/JoueurManager.php');
-    include('./Modeles/Arbitre.php');
-    include('./Modeles/ArbitreManager.php');
+    //On lance la session et on récupère les paramètres s'ils existent
+    session_start();
 
-	//On créer l'objet de connexion à la base de données
-	$objsql = new sql();
+    //Inclusions des fichiers utiles
+    include('./php/class_sql.php');
+    include('./php/fonctions.php');
 
-	//Variables
-	$msg_connexion = "";
+
+
+    spl_autoload_register('chargerClass');
+
+
+
+    //On créer l'objet de connexion à la base de données
+    $objsql = new sql();
+
+    //Variables
+    $msg_connexion = "";
+
 
 	//Gestion de la connexion
 	if(isset($_POST['connexion']) && post_control($_POST['nom_user']) &&  post_control($_POST['mdpass'])){
@@ -45,18 +49,22 @@
 	//Gestion de la déconnexion
 	if(isset($_POST['deconnexion'])){
 		session_unset();
+        header('Location: ./connexion.php');
 	}
 
 	//On regarde si il y a une session existante, si oui, on passe à l'index
-	if(isset($_SESSION['connected']) && $_SESSION['connected']==true){
-		header('Location: ./index.php');
-	}
+	if(isset($_SESSION['connected']) && $_SESSION['connected']==true && $_SESSION['role_user']=='presentateur'){
+		header('Location: ./accueil_presentateur.php');}
 
-//$joueurManager = new JoueurManager();
-//var_dump($joueurManager->readAll());
+	else if(isset($_SESSION['connected']) && $_SESSION['connected']==true && $_SESSION['role_user']=='Entraîneur'){
+			header('Location: ./accueil_entraineur.php');}		
 
-$arbitreManager = new ArbitreManager();
-var_dump($arbitreManager->readAll());
+		
+
+
+
+
+
 
 ?>
 <!DOCTYPE html>
