@@ -11,15 +11,10 @@ include('./php/fonctions.php');
 
 spl_autoload_register('chargerClass');
 
-$EquipeManager = new EquipeManager();
-$equipeCollection = $EquipeManager->readAll();
-
-$ArbitreManager = new ArbitreManager();
-$arbitreCollection = $ArbitreManager->readAll();
 
 
 
 
-require('./templates/vue_init_feuille_match.php');
+require('./templates/vue_accueil_presentateur.php');
 
 
