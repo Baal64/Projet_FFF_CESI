@@ -56,6 +56,9 @@
 	if(isset($_SESSION['connected']) && $_SESSION['connected']==true && $_SESSION['role_user']=='presentateur'){
 		header('Location: ./accueil_presentateur.php');}
 
+	else if(isset($_SESSION['connected']) && $_SESSION['connected']==true && $_SESSION['role_user']=='Entraîneur'){
+			header('Location: ./accueil_entraineur.php');}		
+
 		
 
 

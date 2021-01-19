@@ -15,11 +15,7 @@ spl_autoload_register('chargerClass');
 // $ArbitreManager = new ArbitreManager();
 // $arbitreCollection = $ArbitreManager->readAll();
 
-$feuilleMatchManager = new FeuilleMatchManager();
-$feuilleMatchCollection = $feuilleMatchManager->readAll();
+// $feuilleMatchCollection = ;
 
 
-require('./templates/vue_accueil_entraineur.php');
-
-
- 
+require('./templates/vue_creation_equipe_match.php');

@@ -1,10 +1,17 @@
 <? php
 class FeuilleMatchManager{
 
-    private $db;
+    public function readAll(){
+        $s = "SELECT * FROM matchs";
+        $r = $this->db->query($s);
+        $matchCollection = [];
+        while($matchData = $r->fetch(PDO::FETCH_ASSOC)){
+            $match = new Match ($matchData);
 
-    public function __construct($lieu, $date){
-        $this->db = new PDO('mysql:host=localhost;dbname=fff;charset=utf8','root','',[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+            array_push($matchCollection, $match);
+        }
+        return $matchCollection;
     }
+
 } 
 ?>
