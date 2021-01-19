@@ -1,4 +1,13 @@
 <script type="text/html" id="init_feuille_match">
+    <?php $EquipeManager = new EquipeManager();
+   $equipeCollection = $EquipeManager->readAll();
+
+   foreach ($equipeCollection as $equipe){
+      $collecNomClub = $equipe->getnom_club();
+   }
+
+
+?>
 	<div class="flex flex_col flex_aic flex_sa">
 		<div id="bloc_equipes" class="flex flex_aic flex_sa flex_col">
 			<div class="label">Equipes</div>
@@ -11,8 +20,14 @@
 			<select id="select_equipe_exterieur">
 				<option default>Equipe extérieur</option>
 				<!-- ko foreach : equipes() -->
-					<option data-bind="attr : { value : $data.nom }, text : $data.nom_club"></option>
-				<!-- /ko -->
+                <?php
+
+                foreach ($equipeCollection as $nomClub){
+					echo '<option value="'.$nomClub->getnom_club().'", text="'.$nomClub->getnom_club().'" >'.$nomClub->getnom_club().'</option>';
+
+                } ?>
+                <!-- /ko -->
+
 			</select>
 		</div>
 		<div id="bloc_arbitres" class="flex flex_aic flex_sa flex_col">

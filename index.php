@@ -6,6 +6,18 @@
 		header('Location : ./connexion.php');
 	}
 
+//Inclusions des fichiers utiles
+include('./php/class_sql.php');
+include('./php/fonctions.php');
+
+// Fonction de chargement de classe
+function chargerClass($className){
+    require_once('./Modeles/'.$className.'.php');
+}
+
+spl_autoload_register('chargerClass');
+
+
 ?>
 <!DOCTYPE html>
 <html>
