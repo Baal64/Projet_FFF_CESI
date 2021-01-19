@@ -1,5 +1,6 @@
 <? php
-class FeuilleMatchManager{
+class FeuilleMatchManager extends Manager
+{
 
     public function readAll(){
         $s = "SELECT * FROM matchs";
