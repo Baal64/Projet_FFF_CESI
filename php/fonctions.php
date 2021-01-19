@@ -7,5 +7,9 @@
 		else
 			return false;
 	}
-	
-?>
+
+
+// Fonction de chargement de classe
+function chargerClass($className){
+    require_once('./Modeles/'.$className.'.php');
+}

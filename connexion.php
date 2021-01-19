@@ -7,23 +7,10 @@
     include('./php/class_sql.php');
     include('./php/fonctions.php');
 
-    // Fonction de chargement de classe
-    function chargerClass($className){
-    require_once('./Modeles/'.$className.'.php');
-    }
+
 
     spl_autoload_register('chargerClass');
 
-
-    // include('./Modeles/Manager.php');
-
-
-    // include('./Modeles/Joueur.php');
-    // include('./Modeles/JoueurManager.php');
-    // include('./Modeles/Arbitre.php');
-    // include('./Modeles/ArbitreManager.php');
-    // include('./Modeles/Utilisateur.php');
-    // include('./Modeles/UtilisateurManager.php');
 
 
     //On créer l'objet de connexion à la base de données
@@ -62,18 +49,19 @@
 	//Gestion de la déconnexion
 	if(isset($_POST['deconnexion'])){
 		session_unset();
+        header('Location: ./connexion.php');
 	}
 
 	//On regarde si il y a une session existante, si oui, on passe à l'index
-	if(isset($_SESSION['connected']) && $_SESSION['connected']==true){
-		header('Location: ./index.php');
-	}
+	if(isset($_SESSION['connected']) && $_SESSION['connected']==true && $_SESSION['role_user']=='presentateur'){
+		header('Location: ./accueil_presentateur.php');}
 
-//$joueurManager = new JoueurManager();
-//var_dump($joueurManager->readAll());
+		
 
-$equipeManager = new EquipeManager();
-var_dump($equipeManager->readAll());
+
+
+
+
 
 ?>
 <!DOCTYPE html>
