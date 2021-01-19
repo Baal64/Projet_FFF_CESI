@@ -1,37 +1,49 @@
 <?php
 
     //On lance la session et on récupère les paramètres s'ils existent
-   session_start();
+    session_start();
 
-<<<<<<< Updated upstream
-
-=======
-    // Fonction de chargement de classe
-    function chargerClass($className){
-        require_once('./Modeles/'.$className.'.php');
-    }
+    //Inclusions des fichiers utiles
+    include('./php/class_sql.php');
     include('./php/fonctions.php');
-    spl_autoload_register('chargerClass');
 
 
-    // include('./Modeles/Manager.php');
->>>>>>> Stashed changes
 
     spl_autoload_register('chargerClass');
+
 
 
     //On créer l'objet de connexion à la base de données
-    $connexion = new Connexion();
+    $objsql = new sql();
 
     //Variables
-  $msg_connexion = "";
+    $msg_connexion = "";
+
 
 	//Gestion de la connexion
 	if(isset($_POST['connexion']) && post_control($_POST['nom_user']) &&  post_control($_POST['mdpass'])){
 		$identifiant = $_POST['nom_user'];
 		$mdp = $_POST['mdpass'];
-		if($connexion->connect($identifiant,$mdp))
-            header('Location: ./index.php');
+		//On va regarder dans la base de données si l'utilisateur existe et si il a renseigné ses bonnes informations
+		$sql = "SELECT * FROM utilisateurs WHERE (BINARY id_connexion='$identifiant' OR email_utilisateur='$identifiant') AND BINARY mdp_connexion='$mdp'";
+		$objsql->query($sql,"Essaie de connexion avec un id/mail et un mdp");
+		if($objsql->nb_result()>0){
+			$res = $objsql->fetch_assoc();
+			$id_user = $res['id'];
+			$nom_user = $res['nom_utilisateur'];
+			$prenom_user = $res['prenom_utilisateur'];
+			$role_user = $res['role_utilisateur'];
+			$mail_user = $res['email_utilisateur'];
+			$_SESSION['connected']=true;
+			$_SESSION['id_user']=$id_user;
+			$_SESSION['nom_user']=$nom_user;
+			$_SESSION['prenom_user']=$prenom_user;
+			$_SESSION['role_user']=$role_user;
+			$_SESSION['mail_user']=$mail_user;
+		}
+		else{
+			$msg_connexion = "Votre identifiant et/ou mot de passe n'ont pas permis de vous identifier. Veuillez réessayer.";
+		}
 	}
 
 	//Gestion de la déconnexion
@@ -39,24 +51,21 @@
 		session_unset();
         header('Location: ./connexion.php');
 	}
-<<<<<<< Updated upstream
 
 	//On regarde si il y a une session existante, si oui, on passe à l'index
 	if(isset($_SESSION['connected']) && $_SESSION['connected']==true && $_SESSION['role_user']=='presentateur'){
 		header('Location: ./accueil_presentateur.php');}
 
-		//else if ((isset($_SESSION['connected']) && $_SESSION['connected']==true && $_SESSION['role_user']=='entraineur'){
-		//header('Location: ./accueil_entraineur.php')});
+	else if(isset($_SESSION['connected']) && $_SESSION['connected']==true && $_SESSION['role_user']=='Entraîneur'){
+			header('Location: ./accueil_entraineur.php');}		
 
-		//else ( header('Location: ./connexion.php'));
-
-
+		
 
 
 
 
-=======
->>>>>>> Stashed changes
+
+
 ?>
 <!DOCTYPE html>
 <html>
