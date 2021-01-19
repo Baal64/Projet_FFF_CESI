@@ -20,6 +20,7 @@ $arbitreCollection = $ArbitreManager->readAll();
 
 
 
+
 require('./templates/vue_init_feuille_match.php');
 
 

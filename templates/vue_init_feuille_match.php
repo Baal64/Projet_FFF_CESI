@@ -1,6 +1,7 @@
-
+<?php include('./templates/vue_header.php') ?>
 
 	<div class="flex flex_col flex_aic flex_sa">
+        <form action="" type="post">
 		<div id="bloc_equipes" class="flex flex_aic flex_sa flex_col">
 			<div class="label">Equipes</div>
 			<select id="select_equipe_domicile">
@@ -46,25 +47,54 @@
 			<select id="select_arbitre_assistant1">
 				<option default >Arbitre assistant 1</option>
 
-					<option data-bind="attr : { value : $data.id_arbitre }, text : $data.nom_arbitre+' '+$data.prenom_arbitre"></option>
+                <?php
+
+                foreach ($arbitreCollection as $arbitre){
+                    echo '<option value="'.$arbitre->getnom_arbitre().' '.$arbitre->getprenom_arbitre().'">'.$arbitre->getnom_arbitre().' '.$arbitre->getprenom_arbitre().'</option>';
+
+                } ?>
+
 
 			</select>
 			<select id="select_arbitre_assistant2">
 				<option default>Arbitre assistant 2</option>
 
-					<option data-bind="attr : { value : $data.id_arbitre }, text : $data.nom_arbitre+' '+$data.prenom_arbitre"></option>
+                <?php
 
+                foreach ($arbitreCollection as $arbitre){
+                    echo '<option value="'.$arbitre->getnom_arbitre().' '.$arbitre->getprenom_arbitre().'">'.$arbitre->getnom_arbitre().' '.$arbitre->getprenom_arbitre().'</option>';
+
+                } ?>
 			</select>
 		</div>
 		<div id="bloc_localisation" class="flex flex_aic flex_sa flex_col">
 			<div class="label">Localisation</div>
-			<input type="text" name="localisation_base" id="localisation_base" />
+
+            <select id="stade_match">
+                <option default>Localisation</option>
+
+                <?php
+
+                foreach ($equipeCollection as $equipe){
+                    echo '<option value="'.$equipe->getstade_club().' '.$equipe->getville_club().'">'.$equipe->getstade_club().' '.$equipe->getville_club().'</option>';
+
+                } ?>
+
+
+            </select>
+
+
 			<input type="text" name="localisation_substitut" id="localisation_substitut" />
 		</div>
 		<div id="bloc_date" class="flex flex_aic flex_sa flex_col">
 			<div class="label">Date du match</div>
 			<input type="text" name="date_match" id="date_match" />
 		</div>
-		<div id="valider_creation_feuille">Valider</div>
-		<div id="retour_menu">Retour</div>
+		<button type="submit" id="valider_creation_feuille">Valider</button>
+
+        <a href="accueil_presentateur.php" target="_blank"> <input type="button" value="Retour"></a>
+
+        </form>
 	</div>
+
+

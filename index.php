@@ -5,6 +5,7 @@
 	if(!(isset($_SESSION['connected']) && $_SESSION['connected'])){
 		header('Location : ./connexion.php');
 	}
+<<<<<<< Updated upstream
 
 //Inclusions des fichiers utiles
 include('./php/class_sql.php');
@@ -19,6 +20,8 @@ function chargerClass($className){
 spl_autoload_register('chargerClass');
 
 
+=======
+>>>>>>> Stashed changes
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,7 +39,7 @@ spl_autoload_register('chargerClass');
 		<script type="text/javascript" src="./js/libs/knockout-3.5.1.js"></script>
 		<script type="text/javascript" src="./js/libs/iro.min.js"></script>
 		<script type="text/javascript">
-			var role_utilisateur = '<?php echo $_SESSION['role_user']; ?>';
+			var role_utilisateur = '<?php echo $_SESSION['data_connected_user']['role_user']; ?>';
 		</script>
 		<script type="text/javascript" src="./js/interface.js"></script>
 	</head>
