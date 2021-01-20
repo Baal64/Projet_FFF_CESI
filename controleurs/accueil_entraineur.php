@@ -1,15 +1,9 @@
 <?php
-
-//On lance la session et on récupère les paramètres s'ils existent
 session_start();
 
-//Inclusions des fichiers utiles
-include('./php/class_sql.php');
-include('./php/fonctions.php');
-
+if(file_exists('../php/fonctions.php'))
+    require_once('../php/fonctions.php');
+	// Fonction de chargement de classe
 spl_autoload_register('chargerClass');
 
-$feuilleMatchManager = new FeuilleMatchManager();
-$feuilleMatchCollection = $feuilleMatchManager->readAll();
-
-require('./templates/vue_accueil_entraineur.php');
+//require('./vues/vue_accueil_entraineur.php');

@@ -1,13 +1,12 @@
 <?php
+if(session_status()==PHP_SESSION_NONE)
+    session_start();
 
-//On lance la session et on récupère les paramètres s'ils existent
-session_start();
-
-//Inclusions des fichiers utiles
-include('./php/class_sql.php');
-include('./php/fonctions.php');
-
+if(file_exists('../php/fonctions.php'))
+    require_once('../php/fonctions.php');
+// Fonction de chargement de classe
 spl_autoload_register('chargerClass');
+
 
  $joueurManager = new joueurManager();
  $joueurCollection = $joueurManager->readAll();

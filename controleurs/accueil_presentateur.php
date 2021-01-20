@@ -6,5 +6,5 @@
 	// Fonction de chargement de classe
 	spl_autoload_register('chargerClass');
 
-	require('./templates/vue_accueil_presentateur.php');
+	//require('./templates/vue_accueil_presentateur.php');
 ?>
