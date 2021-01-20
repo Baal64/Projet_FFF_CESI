@@ -7,7 +7,7 @@
     <?php
    // var_dump($listeMatchs);
   //  var_dump($allEquipeMatchs);
-    var_dump($matchmanager->read(1));
+    var_dump(readNomClubsMatch());
     ?>
 
     <div class="flex flex_aic flex_sa flex_col">

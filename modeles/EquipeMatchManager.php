@@ -26,10 +26,10 @@ class EquipeMatchManager extends Manager
     }
 
 
-    public function readDom($id_dom)
+    /*public function readDom($id_dom)
     {
         $s = "SELECT * FROM equipe_match WHERE equipe_domicile = :id_dom";
-    }
+    }*/
 
     public function readDom($equipe_domicile){
         $s = "SELECT * FROM equipe_match WHERE equipe_domicile = :equipe_domicile";
@@ -48,7 +48,7 @@ class EquipeMatchManager extends Manager
         $r->execute();
         $data = $r->fetch(PDO::FETCH_ASSOC);
 
-        $equipemanager = New EquipeManager;
+        $equipemanager = New EquipeManager();
         $domicile = $equipemanager->read($data['equipe_domicile']);
         $exterieur = $equipemanager->read($data['equipe_exterieur']);
 
@@ -61,13 +61,12 @@ class EquipeMatchManager extends Manager
         $s = "INSERT INTO equipe_match (id_match,equipe_domicile,equipe_exterieur)VALUES(?,?,?)";
         $r = $this->db->prepare($s);
 
-        $r->bindValue(1,$ep->getIdMatch(),PDO::PARAM_INT);
-        $r->bindValue(2,$ep->getDom(),PDO::PARAM_INT);
-        $r->bindValue(3,$ep->getExt(),PDO::PARAM_INT);
+        $r->bindValue(1,$ep->getid_match(),PDO::PARAM_INT);
+        $r->bindValue(2,$ep->getequipe_domicile(),PDO::PARAM_INT);
+        $r->bindValue(3,$ep->getequipe_exterieur(),PDO::PARAM_INT);
 
 
         $ok = $r->execute();
-        var_dump($ok);
         if($ok){
             return true;
 
@@ -81,9 +80,9 @@ class EquipeMatchManager extends Manager
         $s = "UPDATE equipe_match SET equipe_domicile=?, equipe_exterieur=? WHERE id_match=?";
         $r = $this->db->prepare($s);
 
-        $r->bindValue(1,$ep->getdom(),PDO::PARAM_INT);
-        $r->bindValue(2,$ep->getext(),PDO::PARAM_INT);
-        $r->bindValue(3,$ep->getIdMatch(),PDO::PARAM_INT);
+        $r->bindValue(1,$ep->getequipe_domicile(),PDO::PARAM_INT);
+        $r->bindValue(2,$ep->getequipe_exterieur(),PDO::PARAM_INT);
+        $r->bindValue(3,$ep->getid_match(),PDO::PARAM_INT);
 
         $ok = $r->execute();
 

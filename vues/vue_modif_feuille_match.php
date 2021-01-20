@@ -67,7 +67,7 @@
 		</div>
 		<div id="bloc_localisation" class="flex flex_aic flex_sa flex_col">
 			<div class="label">Localisation</div>
-			<input type="text" name="localisation_base" class="input" id="localisation_base" disabled="disabled" value="<?php echo $fm->getlieu_match() ?>" />
+			<input type="text" name="localisation_base" class="input" id="localisation_base" value="<?php echo $fm->getlieu_match() ?>" />
 			<input type="text" name="localisation_substitut" class="input" id="localisation_substitut" value="<?php echo $fm->getlieu_substitut() ?>" />
 		</div>
 		<div id="bloc_date" class="flex flex_aic flex_sa flex_col">

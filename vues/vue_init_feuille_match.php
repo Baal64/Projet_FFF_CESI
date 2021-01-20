@@ -51,7 +51,7 @@
 		</div>
 		<div id="bloc_localisation" class="flex flex_aic flex_sa flex_col">
 			<div class="label">Localisation</div>
-			<input type="text" name="localisation_base" id="localisation_base" class="input" disabled="disabled" />
+			<input type="text" name="localisation_base" id="localisation_base" class="input" />
 			<input type="text" name="localisation_substitut" id="localisation_substitut" class="input" />
 		</div>
 		<div id="bloc_date" class="flex flex_aic flex_sa flex_col">

@@ -3,41 +3,59 @@
 
 class EquipeMatch extends Entity
 {
+
+    private $equipe_domicile;
+    private $equipe_exterieur;
     private $id_match;
-    private $id_equipe;
-    private $dom;
-    private $ext;
+
 
     /**
      * @return mixed
      */
+    public function getequipe_domicile()
+    {
+        return $this->equipe_domicile;
+    }
 
-    public function getIdMatch()
+    /**
+     * @param mixed $equipe_domicile
+     */
+    public function setequipe_domicile($equipe_domicile)
+    {
+        $this->equipe_domicile = $equipe_domicile;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getid_match()
     {
         return $this->id_match;
     }
 
     /**
-     * @return mixed
+     * @param mixed $id_match
      */
-    public function getIdEquipe()
+    public function setid_match($id_match)
     {
-        return $this->id_equipe;
+        $this->id_match = $id_match;
     }
-
+    
     /**
      * @return mixed
      */
-    public function getDom()
+    public function getequipe_exterieur()
     {
-        return $this->dom;
+        return $this->equipe_exterieur;
     }
 
     /**
-     * @return mixed
+     * @param mixed $equipe_exterieur
      */
-    public function getExt()
+    public function setequipe_exterieur($equipe_exterieur)
     {
-        return $this->ext;
+        $this->equipe_exterieur = $equipe_exterieur;
     }
+
+
 }
