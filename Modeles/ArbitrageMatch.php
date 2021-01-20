@@ -76,7 +76,7 @@ class ArbitrageMatch extends Entity
     /**
      * @return mixed
      */
-    public function getarbitr_adj_deux()
+    public function getarbitre_adj_deux()
     {
         return $this->arbitre_adj_deux;
     }

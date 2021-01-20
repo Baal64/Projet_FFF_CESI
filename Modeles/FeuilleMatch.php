@@ -4,6 +4,7 @@ class FeuilleMatch extends Entity
 {
 
     private $lieu;
+    private $lieu_substitut;
     private $date;
 
 
@@ -37,6 +38,22 @@ class FeuilleMatch extends Entity
     public function setdate($date)
     {
         $this->date = $date;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getlieu_substitut()
+    {
+        return $this->lieu_substitut;
+    }
+
+    /**
+     * @param mixed $lieu_substitut
+     */
+    public function setlieu_substitut($lieu_substitut)
+    {
+        $this->lieu_substitut = $lieu_substitut;
     }
 
 

@@ -25,18 +25,18 @@ class FeuilleMatchManager extends Manager
     }
 
 
-   public function createFeuilleMatch($db,$date,$lieu){
+   public function createFeuilleMatch(FeuilleMatch $fm){
         $s = "INSERT INTO matchs (date_match,lieu_match)VALUES(?,?)";
-        $r = $db->prepare($s);
+        $r = $this->db->prepare($s);
 
-        $r->bindValue(1,$date,PDO::PARAM_STR);
-        $r->bindValue(2,$lieu,PDO::PARAM_STR);
+        $r->bindValue(1,$fm->getdate(),PDO::PARAM_STR);
+        $r->bindValue(2,$fm->getlieu(),PDO::PARAM_STR);
 
 
         $ok = $r->execute();
 
         if($ok){
-            return $db->lastInsertId();
+            return $this->db->lastInsertId();
 
         }else{
             return false;
@@ -45,9 +45,9 @@ class FeuilleMatchManager extends Manager
     }
 
 
-    public function createJoueurMatch($db,$id_match,$statut_match,$poste_match,$capitaine,$capitaine_sup){
-        $s = "INSERT INTO joueur_match (id_match,statut_match,poste_match,capitaine,capitaine_sup)VALUES(lastInsertId(),?,?,?,?)";
-        $r = $db->prepare($s);
+    public function createJoueurMatch($id_match,$statut_match,$poste_match,$capitaine,$capitaine_sup){
+        $s = "INSERT INTO joueur_match (id_match,statut_match,poste_match,capitaine,capitaine_sup)VALUES(?,?,?,?,?)";
+        $r = $this->db->prepare($s);
 
         $r->bindValue(1,$id_match,PDO::PARAM_INT);
         $r->bindValue(2,$statut_match,PDO::PARAM_STR);
@@ -58,8 +58,7 @@ class FeuilleMatchManager extends Manager
         $ok = $r->execute();
 
         if($ok){
-            return $db->lastInsertId();
-            $nouvelId = $db->lastInsertId();
+            return $this->db->lastInsertId();
         }else{
             return false;
         }
