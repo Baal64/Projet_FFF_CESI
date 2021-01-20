@@ -4,7 +4,6 @@
 class ArbitrageMatch extends Entity
 {
     private $id_match;
-    private $id_arbitre;
     private $arbitre_principal;
     private $arbitre_adj_un;
     private $arbitre_adj_deux;
@@ -23,22 +22,6 @@ class ArbitrageMatch extends Entity
     public function setid_match($id_match)
     {
         $this->id_match = $id_match;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getid_arbitre()
-    {
-        return $this->id_arbitre;
-    }
-
-    /**
-     * @param mixed $id_arbitre
-     */
-    public function setid_arbitre($id_arbitre)
-    {
-        $this->id_arbitre = $id_arbitre;
     }
 
     /**

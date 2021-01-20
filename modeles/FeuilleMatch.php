@@ -54,7 +54,6 @@ class FeuilleMatch extends Entity
     public function setdate_match($date_match)
     {
         $this->date_match = $date_match;
-
     }
     
     /**
