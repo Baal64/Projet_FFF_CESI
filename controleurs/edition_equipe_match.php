@@ -15,4 +15,7 @@ spl_autoload_register('chargerClass');
 
  $listePlacements = array('Centre', 'Droit', 'Gauche');
 
+ $utilisateur = new UtilisateurManager();
+
+
 $view = "vue_creation_equipe_match";

@@ -349,7 +349,7 @@
             <br/>
         </div>
 
-        <button type="submit">Valider</button>
+        <button type="submit">Enregistrer</button>
     </form>
     <form method="post" action="index.php">
         <button type="submit">Retour</button>
