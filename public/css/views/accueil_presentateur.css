@@ -1,0 +1,8 @@
+#separation{
+	height: calc(20vw + 20vh);
+	width: 0px;
+	border: calc(0.1vw + 0.15vh) solid #E5D6B3;
+}
+.box{
+	height: calc(20vw + 20vh);
+}

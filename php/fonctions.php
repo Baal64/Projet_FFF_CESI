@@ -1,11 +1,9 @@
-<?php 
-	
-	//Liste des fonctions utiles
-	function post_control($string){
-		if(isset($string) && trim($string)!="" && $string!=NULL)
-			return true;
-		else
-			return false;
+<?php
+	// Fonction de chargement de classe
+	function chargerClass($className){
+		if(file_exists('./modeles/'.$className.'.php'))
+	  	require_once('./modeles/'.$className.'.php');
+	  else if(file_exists('../modeles/'.$className.'.php'))
+	  	require_once('../modeles/'.$className.'.php');
 	}
-	
 ?>
