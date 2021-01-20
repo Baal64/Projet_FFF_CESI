@@ -23,5 +23,4 @@ class UtilisateurManager extends Manager
         }
         return $utilisateurCollection;
     }
-
 }

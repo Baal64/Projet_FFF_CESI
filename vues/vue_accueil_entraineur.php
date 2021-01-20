@@ -3,7 +3,12 @@
 
 <div class="box flex flex_aic flex_sa flex_col flex1">
     <h2>SELECTION FEUILLE DE MATCH</h2>
-<!--  $connected_user['id_equipe_entraineur'];  verif dans le controlleur-->
+
+    <?php
+   // var_dump($listeMatchs);
+  //  var_dump($allEquipeMatchs);
+    var_dump($matchmanager->read(1));
+    ?>
 
     <div class="flex flex_aic flex_sa flex_col">
         <p class="label">Liste des feuilles de matchs</p>

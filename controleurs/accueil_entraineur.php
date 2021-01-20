@@ -7,9 +7,6 @@ if(file_exists('../php/fonctions.php'))
 // Fonction de chargement de classe
 spl_autoload_register('chargerClass');
 
-// récupération des matchs
-//$feuillematchmanager = new FeuilleMatchManager();
-//$alllistematchs = $feuillematchmanager->readAll();
 // récupération de l'id de l'equipe
 $equipeId = $connected_user['id_equipe_entraineur'];
 
@@ -17,11 +14,13 @@ $equipeId = $connected_user['id_equipe_entraineur'];
 $matchmanager = new EquipeMatchManager();
 $allEquipeMatchs = $matchmanager->readAll();
 
+$listeMatchs = [];
+
 // Edition d'une liste personnalisé en fonction du club
 foreach($allEquipeMatchs as $equipeMatch){
 
-  if($equipeMatch->getDom() == $equipeId){
-      // récupération des matchs
+  if($equipeMatch->getEquipeDomicile() == $equipeId){
+      // récupération des matchs du club
         $feuillematchmanager = new FeuilleMatchManager();
         $feuilleMatch = $feuillematchmanager->read($equipeMatch->getIdMatch());
        array_push($listeMatchs,$feuilleMatch );
@@ -29,3 +28,4 @@ foreach($allEquipeMatchs as $equipeMatch){
 }
 
 $view = "vue_accueil_entraineur";
+
