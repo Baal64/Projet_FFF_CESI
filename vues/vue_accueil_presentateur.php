@@ -19,8 +19,16 @@
 	</div>
 	<div class="flex flex_aic flex_sa flex_col">
 		<p class="label">Liste des feuilles de matchs</p>
+
 		<div id="liste_feuilles_matchs">
-			
+      <?php
+	      foreach ($listematchs as $match){
+	          echo "<div class='flex'>";
+	          echo "<div>".$match->getid_match().' '.$match->getlieu_match().' '.$match->getdate_match()."</div>";
+	          echo "<form method='post' action='index.php'><button name='modif_feuille_match' value='".$match->getid_match()."'>Modifier</button></form>";
+	          echo "</div>";
+	      }   
+      ?>
 		</div>
 	</div>
 </div>
@@ -39,6 +47,15 @@
 	<div class="flex flex_aic flex_sa flex_col">
 		<p class="label">Liste des feuilles de matchs</p>
 		<div id="liste_feuilles_matchs">
+
+            <?php
+            foreach ($listematchs as $match){
+                echo "<div class='flex'>";
+                echo "<div>".$match->getid_match().' '.$match->getlieu_match().' '.$match->getdate_match()."</div>";
+                echo "<form method='post' action='index.php'><button name='modif_feuille_match' value='".$match->getid_match()."'>Modifier</button></form>";
+                echo "</div>";
+            }
+            ?>
 			
 		</div>
 	</div>
