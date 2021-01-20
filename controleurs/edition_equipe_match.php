@@ -11,4 +11,8 @@ spl_autoload_register('chargerClass');
  $joueurManager = new joueurManager();
  $joueurCollection = $joueurManager->readAll();
 
+ $listePostes = array('Avant', 'Ailier', 'Milieu offensif', 'Milieu', 'Milieu défensif', 'Arrière', 'Gardien');
+
+ $listePlacements = array('Centre', 'Droit', 'Gauche');
+
 $view = "vue_creation_equipe_match";
