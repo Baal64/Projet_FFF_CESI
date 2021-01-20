@@ -15,7 +15,8 @@ $listePostes = array('Avant', 'Ailier', 'Milieu offensif', 'Milieu', 'Milieu dé
 
 $listePlacements = array('Centre', 'Droit', 'Gauche');
 
-$utilisateur = new UtilisateurManager();
+$utilisateu= new UtilisateurManager();
+
 
 
 $view = "vue_creation_equipe_match";

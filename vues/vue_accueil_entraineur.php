@@ -3,6 +3,7 @@
 
 <div class="box flex flex_aic flex_sa flex_col flex1">
     <h2>SELECTION FEUILLE DE MATCH</h2>
+<!--  $connected_user['id_equipe_entraineur'];  verif dans le controlleur-->
 
     <div class="flex flex_aic flex_sa flex_col">
         <p class="label">Liste des feuilles de matchs</p>
@@ -13,17 +14,13 @@
                         <div class="label">Feuille de match</div>
                         <select id="select_equipe_domicile">
                             <option default>Selection match</option>
-
-                            <!--					--><?php
-                            //					foreach ($feuilleMatchCollection as $feuilleMatch){
-                            //						echo '<option value="'.$feuilleMatch->getLieu().'", text="'.$feuilleMatch->getLieu().'" >'.$feuilleMatch->getLieu().'</option>';
-                            //
-                            //					} ?>
-
+                            <?php
+                            foreach ($listeMatchs as $match){
+                                echo '<option value="'.$match->getlieu_match().' '.$match->getdate_match().'">'.$match->getlieu_match().' '.$match->getdate_match().'</option>';
+                            }
+                            ?>
                         </select>
-                        <!--			</div>-->
-                        <!--				<a href="edition_equipe_match.php" target="_blank"> <input type="button" value="editer"></a>-->
-                        <!--			</div>-->
+                        <br/>
                         <form method="post" action="index.php">
                             <button id="editer_equipe_match" name="edit_equipe_match" class="btn flex flex_aic flex_sa" type="submit">Editer</button>
                         </form>

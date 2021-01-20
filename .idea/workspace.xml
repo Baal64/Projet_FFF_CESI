@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="37458452-a601-45b9-9603-2285c8f9bd64" name="Default Changelist" comment="Merge branch 'NewMVC' into Alex1&#10;&#10;# Conflicts:&#10;#&#9;index.php" />
+    <list default="true" id="37458452-a601-45b9-9603-2285c8f9bd64" name="Default Changelist" comment="Merge branch 'NewMVC' into Alex3&#10;&#10;# Conflicts:&#10;#&#9;index.php">
+      <change afterPath="$PROJECT_DIR$/Modeles/EquipeMatch.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modeles/Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modeles/Utilisateur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modeles/UtilisateurManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modeles/UtilisateurManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controleurs/accueil_entraineur.php" beforeDir="false" afterPath="$PROJECT_DIR$/controleurs/accueil_entraineur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controleurs/edition_equipe_match.php" beforeDir="false" afterPath="$PROJECT_DIR$/controleurs/edition_equipe_match.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modeles/EquipeMatchManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/modeles/EquipeMatchManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vues/vue_accueil_entraineur.php" beforeDir="false" afterPath="$PROJECT_DIR$/vues/vue_accueil_entraineur.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,6 +83,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -95,6 +105,28 @@
       <workItem from="1611134982501" duration="313000" />
       <workItem from="1611135852786" duration="5579000" />
     </task>
+    <task id="LOCAL-00001" summary="Merge branch 'NewMVC' into Alex3&#10;&#10;# Conflicts:&#10;#&#9;index.php">
+      <created>1611152873095</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1611152873095</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Merge branch 'NewMVC' into Alex3&#10;&#10;# Conflicts:&#10;#&#9;index.php">
+      <created>1611152985795</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1611152985795</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Merge branch 'NewMVC' into Alex3&#10;&#10;# Conflicts:&#10;#&#9;index.php">
+      <created>1611153024014</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1611153024014</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -159,6 +191,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Merge branch 'NewMVC' into Alex3&#10;&#10;# Conflicts:&#10;#&#9;index.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'NewMVC' into Alex3&#10;&#10;# Conflicts:&#10;#&#9;index.php" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/vues/vue_principale.php">

@@ -9,7 +9,7 @@ class EquipeMatchManager extends Manager
         $r = $this->db->query($s);
         $equipematchCollection = [];
         while($equipematchData = $r->fetch(PDO::FETCH_ASSOC)){
-            $equipematch = new EquipeMatch ($matchData);
+            $equipematch = new EquipeMatch ($equipematchData);
 
             array_push($equipematchCollection, $equipematch);
         }
@@ -23,6 +23,30 @@ class EquipeMatchManager extends Manager
         $r->execute();
         $data = $r->fetch(PDO::FETCH_ASSOC);
         return new EquipeMatch($data);
+    }
+
+    public function readDom($id_dom){
+        $s = "SELECT * FROM equipe_match WHERE equipe_domicile = :id_dom";
+        $r = $this->db->prepare($s);
+        $r->BindValue(':id_dom', $id_dom, PDO::PARAM_INT);
+        $r->execute();
+        $data = $r->fetch(PDO::FETCH_ASSOC);
+        return new EquipeMatch($data);
+    }
+
+    public function readNomClubs($id_match){
+        $s = "SELECT * FROM equipe_match WHERE id_match = :id_match";
+        $r = $this->db->prepare($s);
+        $r->BindValue(':id_match', $id_match, PDO::PARAM_INT);
+        $r->execute();
+        $data = $r->fetch(PDO::FETCH_ASSOC);
+
+        $equipemanager = New EquipeManager;
+        $domicile = $equipemanager->read($data['equipe_domicile']);
+        $exterieur = $equipemanager->read($data['equipe_exterieur']);
+
+        return [$domicile,$exterieur];
+
     }
 
 	public function createEquipeMatch(EquipeMatch $ep){

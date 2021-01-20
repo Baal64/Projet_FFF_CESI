@@ -11,6 +11,15 @@ class Utilisateur extends Entity
     private $email_utilisateur;
     private $id_connexion;
     private $mdp_connexion;
+    private $id_club;
+
+    /**
+     * @return mixed
+     */
+    public function getIdClub()
+    {
+        return $this->id_club;
+    }
 
     /**
      * @return mixed
