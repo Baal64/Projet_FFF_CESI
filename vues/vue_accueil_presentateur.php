@@ -2,8 +2,8 @@
 <script type="text/javascript" src="./public/js/vues/accueil_presentateur.js"></script>
 
 <!-- Partie pré-match -->
-<div class="box flex flex_aic flex_sa flex_col flex1">
-	<h2>PRE MATCH</h2>
+<div class="box flex flex_aic flex_sb flex_col flex1">
+	<h2 class="title">PRE MATCH</h2>
 	<div class="flex flex_aic flex_sa flex_col">
 		<p class="label">Créer une feuille de match</p>
 		<form method="post" action="index.php">
@@ -13,13 +13,12 @@
 	<div class="flex flex_aic flex_sa flex_col">
 		<p class="label">Modifier une feuille de match</p>
 		<div class="flex flex_aic">
-			<input type="text" placeholder="Rechercher" />
-			<div id="recherche_feuille_match_pre">OK</div>
+			<input type="text" class="input" placeholder="Rechercher" />
+			<button id="recherche_feuille_match_pre" class="btn">OK</button>
 		</div>
 	</div>
 	<div class="flex flex_aic flex_sa flex_col">
 		<p class="label">Liste des feuilles de matchs</p>
-
 		<div id="liste_feuilles_matchs">
 
           <!--  feuille de match : afficher le nom de chaque équipe, et la date
@@ -63,14 +62,14 @@
 <!-- Séparateur -->
 <div id="separation"></div>
 <!-- Partie post-match -->
-<div class="box flex flex_aic flex_sa flex_col flex1">
-	<h2>POST MATCH</h2>
+<div class="box flex flex_aic flex_sb flex_col flex1">
+	<h2 class="title">POST MATCH</h2>
 	<div class="flex flex_aic flex_sa flex_col">
 		<p class="label">Rechercher une feuille de match</p>
 		<div class="flex flex_aic">
-			<input type="text" placeholder="Rechercher" />
+			<input type="text" class="input" placeholder="Rechercher" />
 			<form method="post" action="index.php">
-        <button id="create_feuille_bilan_match" name="create_feuille_bilan_match" class="btn flex flex_aic flex_sa" type="submit">ok</button>
+        <button id="create_feuille_bilan_match" name="create_feuille_bilan_match" class="btn flex flex_aic flex_sa" type="submit">OK</button>
       </form>
 		</div>
 	</div>

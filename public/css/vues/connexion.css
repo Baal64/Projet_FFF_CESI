@@ -21,7 +21,7 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url(./images/logofff.png);
+  background-image: url(../images/logofff.png);
 }
 
 
@@ -55,22 +55,23 @@
 }
 
 #btn_connexion{
-	background-color: #0050A3;
-	border: 2px solid transparent;
-	border-radius: 5px;
-	box-sizing: border-box;
+	background-color: #005BAD;
+	border-radius: calc(0.1vw + 0.1vh);
 	color: #fff;
 	cursor: pointer;
 	font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
-	font-size: 14px;
-	line-height: 40px;
-	margin: 0;
-	min-width: 2.78572em;
-	height: 45px;
-	outline: medium none;
-	padding: 0 1em;
+	font-size: calc(5px + 0.5vw + 0.5vh);
+	font-weight: 500;
+	min-width: 150px;
+	height: calc(2vw + 2vh);
+	padding: 0 calc(0.15vw + 0.15vh);
 	position: relative;
 	text-align: center;
-	text-decoration: none;
 	font-weight: 700;
+	box-sizing: border-box;
+	margin: calc(0.15vw + 0.15vh) 0;
+}
+
+.text{
+	font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
 }

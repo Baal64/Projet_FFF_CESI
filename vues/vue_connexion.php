@@ -4,7 +4,7 @@
 		<title>Connexion</title>
 		<!-- Inclusion des css -->
 		<link rel="stylesheet" type="text/css" href="./public/css/flex_css.css">
-		<link rel="stylesheet" type="text/css" href="./public/css/connexion.css">
+		<link rel="stylesheet" type="text/css" href="./public/css/vues/connexion.css">
 		<!-- Inclusion des js -->
 		<script type="text/javascript" src="./public/js/libs/jquery-3.5.1.min.js"></script>
 		<script type="text/javascript" src="./public/js/connexion.js"></script>
