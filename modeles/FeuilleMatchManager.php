@@ -25,12 +25,32 @@ class FeuilleMatchManager extends Manager
     }
 
 
-   public function createFeuilleMatch(FeuilleMatch $fm){
+    public function createFeuilleMatch(FeuilleMatch $fm){
         $s = "INSERT INTO matchs (date_match,lieu_match)VALUES(?,?)";
         $r = $this->db->prepare($s);
 
-        $r->bindValue(1,$fm->getdate(),PDO::PARAM_STR);
-        $r->bindValue(2,$fm->getlieu(),PDO::PARAM_STR);
+        $r->bindValue(1,$fm->getdate_match(),PDO::PARAM_STR);
+        $r->bindValue(2,$fm->getlieu_match(),PDO::PARAM_STR);
+
+
+        $ok = $r->execute();
+
+        if($ok){
+            return $this->db->lastInsertId();
+
+        }else{
+            return false;
+        }
+
+    }
+
+    public function updateFeuilleMatch(FeuilleMatch $fm){
+        $s = "UPDATE matchs SET date_match=?, lieu_match=? WHERE id_match=?";
+        $r = $this->db->prepare($s);
+
+        $r->bindValue(1,$fm->getdate_match(),PDO::PARAM_STR);
+        $r->bindValue(2,$fm->getlieu_match(),PDO::PARAM_STR);
+        $r->bindValue(3,$fm->getid_match(),PDO::PARAM_INT);
 
 
         $ok = $r->execute();

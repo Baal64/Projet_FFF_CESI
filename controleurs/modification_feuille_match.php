@@ -13,10 +13,19 @@
 	$arbitres_obj = new ArbitreManager();
 	$arbitres = $arbitres_obj->readAll();
 
-	$joueurs_obj = new JoueurManager();
-	$joueurs = $joueurs_obj->readAll();
+	if(isset($_POST['modif_feuille_match']) || isset($_POST['modification_feuille_match'])){
+		$id_match = isset($_POST['modif_feuille_match']) ? $_POST['modif_feuille_match'] : $_POST['modification_feuille_match'];
 
-	$view = "vue_init_feuille_match";
+		$fmm = new FeuilleMatchManager();
+		$fm = $fmm->read($id_match);
+
+		$emm = new EquipeMatchManager();
+		$em = $emm->read($id_match);
+
+		$amm = new ArbitrageMatchManager();
+		$am = $amm->read($id_match);
+	}
+	$view = "vue_modif_feuille_match";
 
 	if(isset($_POST['get_ville_from_equipe_selection'])){
 		$to_return = "";
@@ -27,7 +36,7 @@
 		echo $to_return;
 	}
 
-	if(isset($_POST['creation_feuille_match'])){
+	if(isset($_POST['modification_feuille_match'])){
 		$equipe_dom = $_POST['select_equipe_domicile'];
 		$equipe_ext = $_POST['select_equipe_exterieur'];
 		$arbitre = $_POST['select_arbitre_princiçpal'];
@@ -36,30 +45,18 @@
 		$localisation = $_POST['localisation_base'];
 		$localisation_sub = $_POST['localisation_substitut'];
 		$date = format_date($_POST['date_match']);
+		$id_match = $_POST['modification_feuille_match'];
 
 		//Création de l'objet feuille de match
 		$fm = new FeuilleMatch();
+		$fm->setid_match($id_match);
 		$fm->setlieu_match($localisation);
 		$fm->setlieu_substitut($localisation_sub);
 		$fm->setdate_match($date);
-
-		//Création des tableaux de joueurs de l'équipe domicile et l'équipe ext
-		/*$tab_equipe_dom = [];
-		$tab_equipe_ext = [];
-		foreach($joueurs as $joueur){
-			if($joueur->getid_equipe()==$equipe_dom || $joueur->getid_equipe()==$equipe_ext){
-				$jm = new JoueurMatch();
-				$jm->setid_joueur($joueur->getid_joueur());
-				$jm->getstatut_match($joueur->getstatut_joueur());
-				$jm->setposte_match($joueur->getposte_joueur());
-				$jm->setposte_match($joueur->getposte_joueur());
-				$jm->setposte_match($joueur->getposte_joueur());
-			}
-		}*/
 		
 		//Création de la feuille de match en bdd
 		$fmm = new FeuilleMatchManager();
-		$id_match = $fmm->createFeuilleMatch($fm);
+		$fmm->updateFeuilleMatch($fm);
 
 		//Création de l'objet equipe match
 		$em = new EquipeMatch();
@@ -76,9 +73,9 @@
 
 		//Création de l'equipe match en bdd
 		$emm = new EquipeMatchManager();
-		$emm->createEquipeMatch($em);
+		$emm->updateEquipeMatch($em);
 		
 		//Création de l'arbitrage match en bdd
 		$emm = new ArbitrageMatchManager();
-		$emm->createArbitrageMatch($am);
+		$emm->updateArbitrageMatch($am);
 	}

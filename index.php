@@ -22,8 +22,14 @@ if($connected_user){
     if(isset($_POST['create_feuille_match']) || isset($_POST['creation_feuille_match'])){
         require_once('./controleurs/creation_feuille_match.php');
     }
-    else if(isset($_POST['edit_equipe_match'])){
+    if(isset($_POST['edit_equipe_match'])){
         require_once('./controleurs/edition_equipe_match.php');
+    }
+    if(isset($_POST['modif_feuille_match']) || isset($_POST['modification_feuille_match'])){
+        require_once('./controleurs/modification_feuille_match.php');
+    }
+    if(isset($_POST['create_feuille_bilan_match']) || isset($_POST['creation_feuille_bilan_match'])){
+        require_once('./controleurs/creation_feuille_bilan_match.php');
     }
     require_once('./vues/vue_principale.php');
 }

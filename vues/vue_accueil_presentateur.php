@@ -23,10 +23,10 @@
 		<div id="liste_feuilles_matchs">
       <?php
 	      foreach ($listematchs as $match){
-	          echo "<div class='flex'>";
-	          echo "<div>".$match->getid_match().' '.$match->getlieu_match().' '.$match->getdate_match()."</div>";
-	          echo "<form method='post' action='index.php'><button name='modif_feuille_match' value='".$match->getid_match()."'>Modifier</button></form>";
-	          echo "</div>";
+          echo "<div class='flex'>";
+          echo "<div>".$match->getid_match().' '.$match->getlieu_match().' '.$match->getdate_match()."</div>";
+          echo "<form method='post' action='index.php'><button name='modif_feuille_match' value='".$match->getid_match()."'>Modifier</button></form>";
+          echo "</div>";
 	      }   
       ?>
 		</div>
@@ -41,21 +41,14 @@
 		<p class="label">Rechercher une feuille de match</p>
 		<div class="flex flex_aic">
 			<input type="text" placeholder="Rechercher" />
-			<div id="recherche_feuille_match_post">OK</div>
+			<form method="post" action="index.php">
+        <button id="create_feuille_bilan_match" name="create_feuille_bilan_match" class="btn flex flex_aic flex_sa" type="submit">ok</button>
+      </form>
 		</div>
 	</div>
 	<div class="flex flex_aic flex_sa flex_col">
 		<p class="label">Liste des feuilles de matchs</p>
 		<div id="liste_feuilles_matchs">
-
-            <?php
-            foreach ($listematchs as $match){
-                echo "<div class='flex'>";
-                echo "<div>".$match->getid_match().' '.$match->getlieu_match().' '.$match->getdate_match()."</div>";
-                echo "<form method='post' action='index.php'><button name='modif_feuille_match' value='".$match->getid_match()."'>Modifier</button></form>";
-                echo "</div>";
-            }
-            ?>
 			
 		</div>
 	</div>

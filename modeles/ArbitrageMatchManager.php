@@ -10,7 +10,7 @@ class ArbitrageMatchManager extends Manager
         $r->BindValue(':id_match', $id_match, PDO::PARAM_INT);
         $r->execute();
         $data = $r->fetch(PDO::FETCH_ASSOC);
-        return new ArbitageMatch($data);
+        return new ArbitrageMatch($data);
     }
 
     public function readAll(){
@@ -18,7 +18,7 @@ class ArbitrageMatchManager extends Manager
         $r = $this->db->query($s);
         $arbitrageMatchCollection = [];
         while($arbitrageMatchData = $r->fetch(PDO::FETCH_ASSOC)){
-            $arbitrageMatch = new Equipe($arbitrageMatchData);
+            $arbitrageMatch = new ArbitrageMatch($arbitrageMatchData);
 
             array_push($arbitrageMatchCollection, $arbitrageMatch);
         }
@@ -33,6 +33,27 @@ class ArbitrageMatchManager extends Manager
         $r->bindValue(2,$ab->getarbitre_principal(),PDO::PARAM_INT);
         $r->bindValue(3,$ab->getarbitre_adj_un(),PDO::PARAM_INT);
         $r->bindValue(4,$ab->getarbitre_adj_deux(),PDO::PARAM_INT);
+
+
+        $ok = $r->execute();
+
+        if($ok){
+            return true;
+
+        }else{
+            return false;
+        }
+    }
+
+
+    public function updateArbitrageMatch(ArbitrageMatch $ab){
+        $s = "UPDATE arbitrage_match SET arbitre_principal=?, arbitre_adj_un=?, arbitre_adj_deux=? WHERE id_match=?";
+        $r = $this->db->prepare($s);
+
+        $r->bindValue(1,$ab->getarbitre_principal(),PDO::PARAM_INT);
+        $r->bindValue(2,$ab->getarbitre_adj_un(),PDO::PARAM_INT);
+        $r->bindValue(3,$ab->getarbitre_adj_deux(),PDO::PARAM_INT);
+        $r->bindValue(4,$ab->getid_match(),PDO::PARAM_INT);
 
 
         $ok = $r->execute();

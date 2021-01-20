@@ -3,7 +3,6 @@
 
 <div class="flex flex_col flex_aic flex_sa">
 	<form method="post" action="./index.php">
-		<input type="hidden" name="creation_feuille_match">
 		<div id="bloc_equipes" class="flex flex_aic flex_sa flex_col">
 			<div class="label">Equipes</div>
 			<select id="select_equipe_domicile" name="select_equipe_domicile">
@@ -59,7 +58,7 @@
 			<div class="label">Date du match</div>
 			<input type="text" name="date_match" id="date_match" />
 		</div>
-		<button type="submit">Valider</button>
+		<button type="submit" name="creation_feuille_match">Valider</button>
 	</form>
 	<form method="post" action="index.php">
 		<button type="submit">Retour</button>
