@@ -2,42 +2,59 @@
 
 class FeuilleMatch extends Entity
 {
-
-    private $lieu;
+    private $id_match;
+    private $lieu_match;
     private $lieu_substitut;
-    private $date;
+    private $date_match;
+
+    /**
+     * @return mixed
+     */
+    public function getid_match()
+    {
+        return $this->id_match;
+    }
+
+    /**
+     * @param mixed $id_match
+     */
+    public function setid_match($id_match)
+    {
+        $this->id_match = $id_match;
+    }
 
 
     /**
      * @return mixed
      */
-    public function getlieu()
+    public function getlieu_match()
     {
-        return $this->lieu;
+        return $this->lieu_match;
     }
 
     /**
-     * @param mixed $lieu
+     * @param mixed $lieu_match
      */
-    public function setlieu($lieu)
+    public function setlieu_match($lieu_match)
     {
-        $this->lieu = $lieu;
+        $this->lieu_match = $lieu_match;
     }
 
     /**
      * @return mixed
      */
-    public function getdate()
+    public function getdate_match()
     {
-        return $this->date;
+        return $this->date_match;
     }
 
     /**
      * @param mixed $date
      */
-    public function setdate($date)
+    public function setdate_match($date_match)
     {
-        $this->date = $date;
+        $this->date_match = $date_match;
+
     }
     
     /**
