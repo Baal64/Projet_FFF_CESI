@@ -10,5 +10,33 @@
 	$feuillematchmanager = new FeuilleMatchManager();
 	$listematchs = $feuillematchmanager->readAll();
 
+	$equipematchmanager = new EquipeMatchManager();
+	$listeequipesmatch = $equipematchmanager->readAll();
+
+	$equipemanager = new EquipeManager();
+	$listeequipe = $equipemanager->readAll();
+
+
+
+
+     function readNomClubsMatch()
+
+    {    global $listematchs, $equipematchmanager;
+        $infosmatchs = [];
+        foreach ($listematchs as $match) {
+
+            $equipes = $equipematchmanager->readNomClubs($match->getid_match());
+            array_push($infosmatchs,['id_match' => $match->getid_match(),
+                'equipe_domicile' => $equipes[0]->getnom_club(),
+                'equipe_exterieur' => $equipes[1]->getnom_club()]);
+        }
+        return $infosmatchs;
+
+    }
+
+
+
+
+
+
     $view = "vue_accueil_presentateur";
-?>
