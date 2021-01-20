@@ -11,5 +11,4 @@ spl_autoload_register('chargerClass');
  $joueurManager = new joueurManager();
  $joueurCollection = $joueurManager->readAll();
 
-
-require('./templates/vue_creation_equipe_match.php');
+$view = "vue_creation_equipe_match";

@@ -17,10 +17,13 @@ if($connected_user){
         require_once('./controleurs/accueil_presentateur.php');
     }
     else{
-        $view = "vue_accueil_entraineur";
+        require_once('./controleurs/accueil_entraineur.php');
     }
     if(isset($_POST['create_feuille_match']) || isset($_POST['creation_feuille_match'])){
         require_once('./controleurs/creation_feuille_match.php');
+    }
+    else if(isset($_POST['edit_equipe_match'])){
+        require_once('./controleurs/edition_equipe_match.php');
     }
     require_once('./vues/vue_principale.php');
 }
