@@ -7,6 +7,7 @@ class But extends Entity
     private $temps_but;
     private $id_match;
     private $id_joueur;
+    private $contre_camp;
 
     /**
      * @return mixed
@@ -70,6 +71,22 @@ class But extends Entity
     public function setid_joueur($id_joueur)
     {
         $this->id_joueur = $id_joueur;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getcontre_camp()
+    {
+        return $this->contre_camp;
+    }
+
+    /**
+     * @param mixed $contre_camp
+     */
+    public function setcontre_camp($contre_camp)
+    {
+        $this->contre_camp = $contre_camp;
     }
 
 

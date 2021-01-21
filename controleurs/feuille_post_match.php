@@ -91,7 +91,7 @@
     }
 
 
-    if(isset($_POST['set_but'])){
+    /*if(isset($_POST['set_but'])){
         $id_match = $_POST['set_but'];
         $id_joueur = $_POST['select_joueur'];
         $temps = $_POST['tempsbut'];
@@ -100,6 +100,22 @@
         $but->settemps_but($temps);
         $but->setid_match($id_match);
         $but->setid_joueur($id_joueur);
+
+        $bm = new ButManager();
+        $bm->createBut($but);
+    }*/
+
+    if(isset($_POST['set_but'])){
+        $id_match = $_POST['set_but'];
+        $id_joueur = $_POST['select_joueur'];
+        $temps = $_POST['tempsbut'];
+        $contre_camp = $_POST['contresoncamp'];
+
+        $but = new But();
+        $but->settemps_but($temps);
+        $but->setid_match($id_match);
+        $but->setid_joueur($id_joueur);
+        $but->setcontre_camp($contre_camp);
 
         $bm = new ButManager();
         $bm->createBut($but);
@@ -136,7 +152,23 @@
         $cm->createCarton($carton);
     }
 
+
     if(isset($_POST['set_butext'])){
+        $id_match = $_POST['set_butext'];
+        $id_joueur = $_POST['select_joueurext'];
+        $temps = $_POST['tempsbutext'];
+        $contre_camp = $_POST['contresoncamp'];
+
+        $but = new But();
+        $but->settemps_but($temps);
+        $but->setid_match($id_match);
+        $but->setid_joueur($id_joueur);
+        $but->setcontre_camp($id_joueur);
+
+        $bm = new ButManager();
+        $bm->createBut($but);
+    }
+   /* if(isset($_POST['set_butext'])){
         $id_match = $_POST['set_butext'];
         $id_joueur = $_POST['select_joueurext'];
         $temps = $_POST['tempsbutext'];
@@ -148,7 +180,7 @@
 
         $bm = new ButManager();
         $bm->createBut($but);
-    }
+    }*/
 
 
     if(isset($_POST['set_carton_jauneext'])){

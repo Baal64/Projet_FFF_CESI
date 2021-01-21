@@ -97,9 +97,19 @@
     <h3 class="text">Buts</h3>
     <div class="flex flex_col">
         <?php
-            foreach ($buts as $but) {
+           /* foreach ($buts as $but) {
                echo "<div class='text line_but'>".$but['but']->gettemps_but()." - but de ".$but['joueur']->getprenom_joueur().' '.$but['joueur']->getnom_joueur()." pour ".$but['equipe']->getnom_club()."</div>";
+            }*/
+
+        foreach ($buts as $but) {
+
+            if ($but['but']->getcontre_camp() == false) {
+                echo "<div>" . $but['but']->gettemps_but() . " - but de " . $but['joueur']->getprenom_joueur() . ' ' . $but['joueur']->getnom_joueur() . " pour " . $but['equipe']->getnom_club() . "</div>";
+            } else {
+                echo "<div>" . $but['but']->gettemps_but() . " - but contre son camp de " . $but['joueur']->getprenom_joueur() . ' ' . $but['joueur']->getnom_joueur() . " pour " . $but['equipe']->getnom_club() . "</div>";
             }
+        }
+
         ?>
     </div>
     <h3 class="text">Cartons</h3>

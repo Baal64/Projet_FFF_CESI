@@ -25,7 +25,7 @@ class ButManager extends Manager
         return $butCollection;
     }
 
-    public function createBut(But $but){
+   /*public function createBut(But $but){
         $s = "INSERT INTO but (temps_but,id_match,id_joueur)VALUES(?,?,?)";
         $r = $this->db->prepare($s);
 
@@ -42,6 +42,17 @@ class ButManager extends Manager
             return false;
         }
 
-    }
+    }*/
 
+    public function createBut(But $but){
+        $s = "INSERT INTO but (temps_but,id_match,id_joueur,contre_camp)VALUES(?,?,?,?)";
+        $r = $this->db->prepare($s);
+
+        $r->bindValue(1,$but->gettemps_but(),PDO::PARAM_STR);
+        $r->bindValue(2,$but->getid_match(),PDO::PARAM_INT);
+        $r->bindValue(3,$but->getid_joueur(),PDO::PARAM_INT);
+        $r->bindValue(4,$but->getcontre_camp(),PDO::PARAM_BOOL);
+
+    }
 }
+
