@@ -103,10 +103,10 @@
 
         foreach ($buts as $but) {
 
-            if ($but['but']->getcontre_camp() == false) {
-                echo "<div>" . $but['but']->gettemps_but() . " - but de " . $but['joueur']->getprenom_joueur() . ' ' . $but['joueur']->getnom_joueur() . " pour " . $but['equipe']->getnom_club() . "</div>";
+            if ($but['but']->getcontre_camp() == null || $but['but']->getcontre_camp() == 0) {
+                echo "<div class='text'>" . $but['but']->gettemps_but() . " - but de " . $but['joueur']->getprenom_joueur() . ' ' . $but['joueur']->getnom_joueur() . " pour " . $but['equipe']->getnom_club() . "</div>";
             } else {
-                echo "<div>" . $but['but']->gettemps_but() . " - but contre son camp de " . $but['joueur']->getprenom_joueur() . ' ' . $but['joueur']->getnom_joueur() . " pour " . $but['equipe']->getnom_club() . "</div>";
+                echo "<div class='text'>" . $but['but']->gettemps_but() . " - but contre son camp de " . $but['joueur']->getprenom_joueur() . ' ' . $but['joueur']->getnom_joueur() . " de " . $but['equipe']->getnom_club() . "</div>";
             }
         }
 

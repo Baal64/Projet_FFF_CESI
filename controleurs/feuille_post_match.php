@@ -109,7 +109,9 @@
         $id_match = $_POST['set_but'];
         $id_joueur = $_POST['select_joueur'];
         $temps = $_POST['tempsbut'];
-        $contre_camp = $_POST['contresoncamp'];
+        $contre_camp = 0;
+        if(isset($_POST['contresoncamp']))
+         $contre_camp = 1;
 
         $but = new But();
         $but->settemps_but($temps);
@@ -157,13 +159,15 @@
         $id_match = $_POST['set_butext'];
         $id_joueur = $_POST['select_joueurext'];
         $temps = $_POST['tempsbutext'];
-        $contre_camp = $_POST['contresoncamp'];
+        $contre_camp = 0;
+        if(isset($_POST['contresoncampext']))
+         $contre_camp = 1;
 
         $but = new But();
         $but->settemps_but($temps);
         $but->setid_match($id_match);
         $but->setid_joueur($id_joueur);
-        $but->setcontre_camp($id_joueur);
+        $but->setcontre_camp($contre_camp);
 
         $bm = new ButManager();
         $bm->createBut($but);

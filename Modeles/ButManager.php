@@ -53,6 +53,14 @@ class ButManager extends Manager
         $r->bindValue(3,$but->getid_joueur(),PDO::PARAM_INT);
         $r->bindValue(4,$but->getcontre_camp(),PDO::PARAM_BOOL);
 
+        $ok = $r->execute();
+        if($ok){
+            return true;
+
+        }else{
+            return false;
+        }
+
     }
 }
 
