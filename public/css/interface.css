@@ -110,7 +110,82 @@
 	font-size: calc(7px + 0.7vw + 0.7vh);
 }
 
+.score{
+	font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+	font-size: calc(10px + 1vw + 1vh);
+	color: #333;
+}
+
 .btn.back{
 	background-color: #DDD;
 	color: #000;
+}
+
+.liste_fill{
+	width: 80%;
+}
+.liste_fm{
+	width: 90%;
+}
+.ligne_liste{
+	width: 100%;
+	font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+	font-size: calc(4px + 0.4vw + 0.4vh);
+	margin: calc(0.1vw + 0.1vh);
+}
+.line_but,.line_carton{
+	margin: calc(0.2vw + 0.2vh);
+}
+.ligne_liste:hover{
+	background-color: rgba(155,155,155,0.5);
+}
+
+.btn_modify{
+	width: calc(3vw + 3vh);
+	font-size: calc(4px + 0.4vw + 0.4vh);
+	min-width: 80px;
+	padding: calc(0.2vw + 0.2vh);
+	cursor: pointer;
+}
+
+.text{
+	font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.contre_camp{
+	width: 80%;
+}
+
+input[type=checkbox]{
+	margin: 0 calc(0.2vw + 0.2vh);
+}
+
+#print_to_pdf{
+	position: absolute;
+	right: calc(0.2vw + 0.2vh);
+	bottom: calc(0.2vw + 0.2vh);
+	width: calc(1.5vw + 1.5vh);
+	height: calc(3vw + 3vh);
+	background-image: url(./images/pdf.png);
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+.logo_equipe,.maillot_equipe{
+	width: calc(3vw + 3vh);
+	height: calc(3vw + 3vh);
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.logo_equipe{
+	width: calc(5vw + 5vh);
+	height: calc(5vw + 5vh);
+}
+
+#valid_creation_equipe{
+	margin-right: calc(2vw + 2vh);
 }

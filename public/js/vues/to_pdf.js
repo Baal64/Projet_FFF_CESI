@@ -9,7 +9,9 @@ $(function() {
         $('#mainlogo').css('visibility','visible');
         $('#print_to_pdf').css('visibility','visible');
         var html = "<img src="+image+" width='900px'/>";
-        $.post('./php/dompdf/index.php',{'html':html},function(data){console.log(data)});
+        $.post('./php/dompdf/index.php',{'html':html},function(){
+          var win = window.open('./php/dompdf/PDF.pdf', '_blank');
+        });
       }
     });
   });

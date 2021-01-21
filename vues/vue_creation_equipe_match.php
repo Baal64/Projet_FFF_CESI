@@ -1,5 +1,5 @@
 <div class="flex flex_col flex_aic flex_sa">
-    <form method="post" action="./index.php">
+    <form method="post" action="./index.php" class="flex flex_col flex_aic">
         <input type="hidden" name="creation_equipe_match">
 
         <div id="bloc_equipe" class="flex flex_aic flex_sa flex_col">
@@ -348,12 +348,12 @@
             </div>
             <br/>
         </div>
-
-        <button type="submit" name="valid_creation_equipe" value="<?php echo $id_match; ?>">Enregistrer</button>
+        <div clas="flex flex_sa">
+            <button type="submit" name="valid_creation_equipe" class="btn" id="valid_creation_equipe" value="<?php echo $id_match; ?>">Enregistrer</button>
+            <button type="submit" class="btn back">Retour</button>
+        </div>
     </form>
-    <form method="post" action="index.php">
-        <button type="submit">Retour</button>
-    </form>
+    
 </div>
 
 <!--le poste occupé par leur joueur -->

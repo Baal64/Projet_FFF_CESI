@@ -92,6 +92,16 @@
         return $tab_joueurs;
     }
 
+    function getLogoEtMaillotByEquipe($id_equipe){
+        global $listeequipe;
+        $tab_infos = [];
+        foreach ($listeequipe as $equipe) {
+            if($equipe->getid_equipe()==$id_equipe){
+                $tab_infos = array('logo'=>$equipe->getlogo_club(),'maillot_dom'=>$equipe->getmaillot_dom(),'maillot_ext'=>$equipe->getmaillot_ext());
+            }
+        }
+        return $tab_infos;
+    }
 
 
     $feuillematchmanager = new FeuilleMatchManager();
@@ -127,6 +137,9 @@
 
         $joueurs_dom = getJoueurMatchByEquipe($tab_ids_equipe['equipe_domicile'],$id_match);
         $joueurs_ext = getJoueurMatchByEquipe($tab_ids_equipe['equipe_exterieur'],$id_match);
+
+        $infos_dom = getLogoEtMaillotByEquipe($tab_ids_equipe['equipe_domicile']);
+        $infos_ext = getLogoEtMaillotByEquipe($tab_ids_equipe['equipe_exterieur']);
 
         $buts_dom = getNbButsByEquipe($tab_ids_equipe['equipe_domicile'],$id_match);
         $buts_ext = getNbButsByEquipe($tab_ids_equipe['equipe_exterieur'],$id_match);

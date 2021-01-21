@@ -17,9 +17,9 @@
 			<button id="recherche_feuille_match_pre" class="btn">OK</button>
 		</div>
 	</div>
-	<div class="flex flex_aic flex_sa flex_col">
+	<div class="flex flex_aic flex_sa flex_col liste_fill">
 		<p class="label">Liste des feuilles de matchs</p>
-		<div id="liste_feuilles_matchs">
+		<div id="liste_feuilles_matchs" class="liste_fm">
       <?php
 	      foreach ($listematchs as $match){
           foreach ($listeinfosmatch as $infosmatch){
@@ -28,9 +28,9 @@
                   $equipeext = $infosmatch['equipe_exterieur'];
                 }
             }
-          echo "<div class='flex'>";
-          echo "<div>".$equipedom.' / '.$equipeext.' '.$match->getdate_match()."</div>";
-          echo "<form method='post' action='index.php'><button name='modif_feuille_match' value='".$match->getid_match()."'>Modifier</button></form>";
+          echo "<div class='flex flex_aic ligne_liste flex_sb'>";
+          echo "<div>".$equipedom.' / '.$equipeext.' - '.deformat_date($match->getdate_match())."</div>";
+          echo "<form method='post' action='index.php'><button class='btn_modify' name='modif_feuille_match' value='".$match->getid_match()."'>Modifier</button></form>";
           echo "</div>";
 	      }
       ?>
@@ -51,23 +51,23 @@
       </form>
 		</div>
 	</div>
-	<div class="flex flex_aic flex_sa flex_col">
+	<div class="flex flex_aic flex_sa flex_col liste_fill">
 		<p class="label">Liste des feuilles de matchs</p>
-		<div id="liste_feuilles_matchs">
+		<div id="liste_feuilles_matchs" class="liste_fm">
 			 <?php
-	      //foreach ($listematchs as $match){
+	      foreach ($listematchs as $match){
           foreach ($listeinfospostmatch as $infosmatch){
-							$id_match = $infosmatch['id_match'];
-							$equipedom = $infosmatch['equipe_domicile'];
-							$equipeext = $infosmatch['equipe_exterieur'];
-
-							echo "<div class='flex'>";
-							echo "<div>".$equipedom.' / '.$equipeext.' '.$match->getdate_match()."</div>";
-							echo "<form method='post' action='index.php'><button name='modif_feuille_post_match' value='".$id_match."'>Modifier</button></form>";
+						$id_match = $infosmatch['id_match'];
+						$equipedom = $infosmatch['equipe_domicile'];
+						$equipeext = $infosmatch['equipe_exterieur'];
+						if($match->getid_match()==$id_match){
+							echo "<div class='flex flex_aic ligne_liste flex_sb'>";
+							echo "<div>".$equipedom.' / '.$equipeext.' - '.deformat_date($match->getdate_match())."</div>";
+							echo "<form method='post' action='index.php'><button class='btn_modify' name='modif_feuille_post_match' value='".$id_match."'>Modifier</button></form>";
 							echo "</div>";
-            }
-
-	      //}
+	          }
+          }
+				}
       ?>
 		</div>
 	</div>

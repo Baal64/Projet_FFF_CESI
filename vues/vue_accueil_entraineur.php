@@ -18,8 +18,8 @@
                   }
               }
               if($equipedom!=NULL && $equipeext!=NULL){
-                echo "<div class='flex'>";
-                echo "<div>".$equipedom.' / '.$equipeext.' '.$match->getdate_match()."</div>";
+                echo "<div class='flex text'>";
+                echo "<div>".$equipedom.' / '.$equipeext.' - '.deformat_date($match->getdate_match())."</div>";
                 echo "</div>";
              }
            }
@@ -29,7 +29,7 @@
             <div class="flex flex_col flex_aic flex_sa">
                 <div id="bloc_match" class="flex flex_aic flex_sa flex_col">
                     <div class="label">Feuille de match</div>
-                    <form method="post" action="index.php">
+                    <form method="post" action="index.php" class="flex flex_aic flex_col">
                       <select id="select_feuille_match" name="select_feuille_match" class="input">
                         <option default>Selection match</option>
                         <?php
