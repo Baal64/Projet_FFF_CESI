@@ -25,11 +25,14 @@ if($connected_user){
     if(isset($_POST['modif_feuille_match']) || isset($_POST['modification_feuille_match'])){
         require_once('./controleurs/modification_feuille_match.php');
     }
-    if(isset($_POST['create_feuille_bilan_match']) || isset($_POST['creation_feuille_bilan_match'])){
-        require_once('./controleurs/creation_feuille_bilan_match.php');
+    if(isset($_POST['modif_feuille_post_match']) || isset($_POST['set_but']) || isset($_POST['set_carton_jaune']) || isset($_POST['set_carton_rouge']) || isset($_POST['set_butext']) || isset($_POST['set_carton_jauneext']) || isset($_POST['set_carton_rougeext'])){
+        require_once('./controleurs/feuille_post_match.php');
     }
-    if(isset($_POST['edit_equipe_match'])){
+    if(isset($_POST['edit_equipe_match']) || isset($_POST['select_feuille_match']) || isset($_POST['valid_creation_equipe'])){
         require_once('./controleurs/edition_equipe_match.php');
+    }
+    if(isset($_POST['to_pdf'])){
+        require_once('./controleurs/to_pdf.php');
     }
     require_once('./vues/vue_principale.php');
 }

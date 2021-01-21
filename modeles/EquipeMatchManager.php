@@ -56,6 +56,20 @@ class EquipeMatchManager extends Manager
 
     }
 
+    public function readIdClubs($id_match){
+        $s = "SELECT * FROM equipe_match WHERE id_match = :id_match";
+        $r = $this->db->prepare($s);
+        $r->BindValue(':id_match', $id_match, PDO::PARAM_INT);
+        $r->execute();
+        $data = $r->fetch(PDO::FETCH_ASSOC);
+
+        $equipemanager = New EquipeManager();
+        $domicile = $data['equipe_domicile'];
+        $exterieur = $data['equipe_exterieur'];
+
+        return [$domicile,$exterieur];
+
+    }
 
 	public function createEquipeMatch(EquipeMatch $ep){
         $s = "INSERT INTO equipe_match (id_match,equipe_domicile,equipe_exterieur)VALUES(?,?,?)";

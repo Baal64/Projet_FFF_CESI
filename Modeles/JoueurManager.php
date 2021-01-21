@@ -28,6 +28,20 @@ class JoueurManager extends Manager
         return $joueurCollection;
     }
 
+    public function readByEquipe($id_equipe){
+        $s = "SELECT * FROM joueurs WHERE id_equipe = :id_equipe";
+        $r = $this->db->prepare($s);
+        $r->BindValue(':id_equipe', $id_equipe, PDO::PARAM_INT);
+        $r->execute();
+        $joueurCollection = [];
+        while($joueurData = $r->fetch(PDO::FETCH_ASSOC)){
+            $joueur = new Joueur($joueurData);
+
+            array_push($joueurCollection, $joueur);
+        }
+        return $joueurCollection;
+    }
+
 
 
 

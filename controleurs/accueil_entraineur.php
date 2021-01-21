@@ -16,6 +16,8 @@ $listematchs = $feuillematchmanager->readAll();
 $equipematchmanager = new EquipeMatchManager();
 $listeequipesmatch = $equipematchmanager->readAll();
 
+$listeinfosmatch = readNomClubsMatch();
+
 $listeMatchs = [];
 
 function readNomClubsMatch(){
