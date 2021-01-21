@@ -91,7 +91,7 @@
 <div  style="background-color: #d0d8ff; height: 80%" class="box flex flex_aic flex_sa flex_col flex1">
     <h2 class="title">Récapitulatif</h2>
     <div><h3 class="text">Score</h3></div>
-    <p class="score"><?php echo $tab_noms_equipe['equipe_domicile'].' ('.count($buts_dom).') / '.$tab_noms_equipe['equipe_exterieur'].' ('.count($buts_ext).')'; ?></p>
+    <p class="score"><?php echo $tab_noms_equipe['equipe_domicile'].' ('.$buts_dom.') / '.$tab_noms_equipe['equipe_exterieur'].' ('.$buts_ext.')'; ?></p>
     <div class="flex flex_aic flex_col">
     <h2 class="title">Détail</h2>
     <h3 class="text">Buts</h3>
@@ -106,7 +106,7 @@
             if ($but['but']->getcontre_camp() == null || $but['but']->getcontre_camp() == 0) {
                 echo "<div class='text'>" . $but['but']->gettemps_but() . " - but de " . $but['joueur']->getprenom_joueur() . ' ' . $but['joueur']->getnom_joueur() . " pour " . $but['equipe']->getnom_club() . "</div>";
             } else {
-                echo "<div class='text'>" . $but['but']->gettemps_but() . " - but contre son camp de " . $but['joueur']->getprenom_joueur() . ' ' . $but['joueur']->getnom_joueur() . " de " . $but['equipe']->getnom_club() . "</div>";
+                echo "<div class='text'>" . $but['but']->gettemps_but() . " - but contre son camp de " . $but['joueur']->getprenom_joueur() . ' ' . $but['joueur']->getnom_joueur() . " de l'équipe " . $but['equipe']->getnom_club() . "</div>";
             }
         }
 

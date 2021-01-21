@@ -40,7 +40,7 @@
         global $butsmatch,$listejoueurs,$listeequipe;
         $tab_buts = [];
         foreach ($butsmatch as $but){
-            if($but->getid_match()==$id_match){
+            if($but->getid_match()==$id_match && ($but->getcontre_camp()==NULL || $but->getcontre_camp()==0)){
                 foreach ($listejoueurs as $joueur) {
                     if($but->getid_joueur()==$joueur->getid_joueur() && $joueur->getid_equipe()==$id_equipe){
                         foreach ($listeequipe as $equipe) {
@@ -51,7 +51,25 @@
                 }
             }
         }
-        return $tab_buts;
+        return count($tab_buts);
+    }
+
+    function getNbButsContreCampByEquipe($id_equipe,$id_match){
+        global $butsmatch,$listejoueurs,$listeequipe;
+        $tab_buts = [];
+        foreach ($butsmatch as $but){
+            if($but->getid_match()==$id_match && $but->getcontre_camp()==1){
+                foreach ($listejoueurs as $joueur) {
+                    if($but->getid_joueur()==$joueur->getid_joueur() && $joueur->getid_equipe()==$id_equipe){
+                        foreach ($listeequipe as $equipe) {
+                           if($equipe->getid_equipe()==$id_equipe)
+                            array_push($tab_buts, array('but'=>$but,'joueur'=>$joueur,'equipe'=>$equipe));
+                        }
+                    }
+                }
+            }
+        }
+        return count($tab_buts);
     }
 
     function getNbButsByMatch($id_match){
@@ -247,8 +265,8 @@
         $joueursDom = $joueurmanager->readByEquipe($tab_ids_equipe['equipe_domicile']);
         $joueursExt = $joueurmanager->readByEquipe($tab_ids_equipe['equipe_exterieur']);
 
-        $buts_dom = getNbButsByEquipe($tab_ids_equipe['equipe_domicile'],$id_match);
-        $buts_ext = getNbButsByEquipe($tab_ids_equipe['equipe_exterieur'],$id_match);
+        $buts_dom = getNbButsByEquipe($tab_ids_equipe['equipe_domicile'],$id_match)+getNbButsContreCampByEquipe($tab_ids_equipe['equipe_exterieur'],$id_match);
+        $buts_ext = getNbButsByEquipe($tab_ids_equipe['equipe_exterieur'],$id_match)+getNbButsContreCampByEquipe($tab_ids_equipe['equipe_domicile'],$id_match);
         $buts = getNbButsByMatch($id_match);
         $cartons = getCartonsByMatch($id_match);
     }
