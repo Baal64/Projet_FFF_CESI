@@ -2,6 +2,9 @@
 if(session_status()==PHP_SESSION_NONE)
     session_start();
 
+if(!isset($connected_user))
+    $connected_user = $_SESSION['connected_user_data'];
+
 if(file_exists('../php/fonctions.php'))
     require_once('../php/fonctions.php');
 // Fonction de chargement de classe
@@ -16,7 +19,7 @@ $equipeId = $connected_user['id_equipe_entraineur'];
 
 $joueurManager = new joueurManager();
 $joueurCollection = $joueurManager->readByEquipe($equipeId);
-$listePostes = array('Avant', 'Ailier', 'Milieu offensif', 'Milieu', 'Milieu défensif', 'Arrière', 'Gardien');
+$listePostes = array('Attaquant', 'Ailier', 'Milieu offensif', 'Milieu', 'Milieu défensif', 'Défenseur', 'Gardien');
 
 $listePlacements = array('Centre', 'Droit', 'Gauche');
 
@@ -220,6 +223,14 @@ if(isset($_POST['valid_creation_equipe'])){
 	$jmm = new JoueurMatchManager();
 	$jmm->createJoueursMatch($tab_joueurs_match);
 
+}
+
+if(isset($_POST['get_joueurs'])){
+    $tab = [];
+    foreach($joueurCollection as $joueur){
+        array_push($tab,array('id'=>$joueur->getid_joueur(),'nom'=>$joueur->getnom_joueur(),'prenom'=>$joueur->getprenom_joueur(),'poste'=>$joueur->getposte_joueur()));
+    }
+    echo json_encode($tab);
 }
 
 $view = "vue_creation_equipe_match";
