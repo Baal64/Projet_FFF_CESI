@@ -25,6 +25,21 @@ class JoueurMatchManager extends Manager
         return $joueurMatchCollection;
     }
 
+    public function readByMatch($id_match){
+        $s = "SELECT * FROM joueur_match WHERE id_match = :id_match";
+        $r = $this->db->prepare($s);
+        $r->BindValue(':id_match', $id_match, PDO::PARAM_INT);
+        $r->execute();
+        $joueurMatchCollection = [];
+        while($joueurMatchData = $r->fetch(PDO::FETCH_ASSOC)){
+            var_dump($joueurMatchData);
+            $joueurMatch = new JoueurMatch($joueurMatchData);
+
+            array_push($joueurMatchCollection, $joueurMatch);
+        }
+        return $joueurMatchCollection;
+    }
+
     public function createJoueurMatch(JoueurMatch $jm){
         $s = "INSERT INTO joueur_match (id_joueur,id_match,statut_match,poste_match,placement_match,capitaine,capitaine_sup)VALUES(?,?,?,?,?,?,?)";
         $r = $this->db->prepare($s);

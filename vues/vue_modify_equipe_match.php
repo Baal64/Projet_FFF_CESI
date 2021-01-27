@@ -5,7 +5,7 @@
         <input type="hidden" name="creation_equipe_match">
 
         <div id="bloc_equipe" class="flex flex_aic flex_sa flex_col">
-            <div class="label">Composition de l'équipe <?php echo $equipe->getnom_club(); ?></div>
+            <div class="label">Joueurs</div>
             <div>
                 <select class="input joueurSelection" id="select_capitaine" name="select_capitaine">
                     <option default value="" >Capitaine</option>
@@ -351,7 +351,7 @@
             <br/>
         </div>
         <div clas="flex flex_sa">
-            <button type="submit" name="valid_creation_equipe" class="btn" id="valid_creation_equipe" value="<?php echo $id_match; ?>" disabled="disabled">Enregistrer</button>
+            <button type="submit" name="valid_creation_equipe" class="btn" id="valid_creation_equipe" value="<?php echo $id_match; ?>">Enregistrer</button>
             <button type="submit" class="btn back">Retour</button>
         </div>
     </form>

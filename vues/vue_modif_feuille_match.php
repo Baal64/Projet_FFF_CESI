@@ -2,11 +2,11 @@
 <script type="text/javascript" src="./public/js/vues/modification_feuille_match.js"></script>
 
 <div class="flex flex_col flex_aic flex_sa">
-	<form method="post" action="./index.php" class="flex flex_col flex_aic">
+	<form id="modif_feuille" method="post" action="./index.php" class="flex flex_col flex_aic">
 		<input type="hidden" name="modification_feuille_match">
 		<div id="bloc_equipes" class="flex flex_aic flex_sa flex_col">
 			<div class="label">Equipes</div>
-			<select id="select_equipe_domicile" name="select_equipe_domicile" class="input">
+			<select id="select_equipe_domicile" name="select_equipe_domicile" class="input selectEquipe">
 				<option value="">Equipe domicile</option>
 				<?php
 	       	foreach ($equipes as $equipe){
@@ -17,7 +17,7 @@
 					} 
 				?>
 			</select>
-			<select id="select_equipe_exterieur" name="select_equipe_exterieur" class="input">
+			<select id="select_equipe_exterieur" name="select_equipe_exterieur" class="input selectEquipe">
 				<option value="">Equipe extérieur</option>
 	       <?php
 		       	foreach ($equipes as $equipe){
@@ -31,7 +31,7 @@
 		</div>
 		<div id="bloc_arbitres" class="flex flex_aic flex_sa flex_col">
 			<div class="label">Arbitres</div>
-			<select id="select_arbitre_princiçpal" name="select_arbitre_princiçpal" class="input">
+			<select id="select_arbitre_princiçpal" name="select_arbitre_princiçpal" class="input selectArbitre">
 				<option value="">Arbitre principal</option>
 				<?php
 	       	foreach ($arbitres as $arbitre){
@@ -42,7 +42,7 @@
 					} 
 				?>
 			</select>
-			<select id="select_arbitre_assistant1" name="select_arbitre_assistant1" class="input">
+			<select id="select_arbitre_assistant1" name="select_arbitre_assistant1" class="input selectArbitre">
 				<option value="">Arbitre assistant 1</option>
 				<?php
 	       	foreach ($arbitres as $arbitre){
@@ -53,7 +53,7 @@
 					} 
 				?>
 			</select>
-			<select id="select_arbitre_assistant2"  name="select_arbitre_assistant2" class="input">
+			<select id="select_arbitre_assistant2"  name="select_arbitre_assistant2" class="input selectArbitre">
 				<option value="">Arbitre assistant 2</option>
 				<?php
 	       	foreach ($arbitres as $arbitre){
@@ -74,7 +74,8 @@
 			<div class="label">Date du match</div>
 			<input type="text" name="date_match" class="input" id="date_match" value="<?php echo deformat_date($fm->getdate_match()) ?>"/>
 		</div>
-		<button type="submit" name="modification_feuille_match" class="btn" id="valide_modif_feuille_match" value="<?php echo $id_match; ?>">Valider</button>
+		<input type="hidden" name="modification_feuille_match" value="<?php echo $id_match; ?>">
+		<button type="button" class="btn" id="valide_modif_feuille_match">Valider</button>
 	</form>
 	<form method="post" action="index.php">
 		<button type="submit" class="btn back">Retour</button>

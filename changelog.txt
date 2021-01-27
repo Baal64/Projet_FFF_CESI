@@ -1,0 +1,20 @@
+PARTIE ENTRAINEUR :
+	--> Composition d'un équipe
+		- Ajout du nom de l'équipe en cours de création/modification
+		- Un même joueur ne peut plus être sélectionné plusieurs fois dans l'équipe
+		- Affection du poste du joueur par défaut lors de la sélection d'un joueur
+		- Deux postes de gardien ne peuvent pas être sélectionné dans une equipe (sauf des les joueurs remplaçants)
+		- La création d'une équipe ne peut se faire que si le formulaire est intégralement rempli
+		- Choix du placement supprimé pour le poste de gardien
+
+
+PARTIE PRESENTATEUR :
+	--> Création d'une feuille de match
+		- Il n'est plus possible de faire jouer une équipe contre elle même
+		- Il n'est plus possible de sélectionner le même arbitre pour les différents postes d'arbitrage
+		- Il n'est plus possible de valider la création de la feuille de match avec des équipes qui ont déjà des match le même jour que la date sélectionnée 
+
+	--> Modification d'une feuille de match
+		- Il n'est plus possible de faire jouer une équipe contre elle même
+		- Il n'est plus possible de sélectionner le même arbitre pour les différents postes d'arbitrage
+		- Il n'est plus possible de valider la modification la feuille de match avec des équipes qui ont déjà des match le même jour que la date sélectionnée

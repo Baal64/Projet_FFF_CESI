@@ -10,11 +10,17 @@
 	$equipes_obj = new EquipeManager();
 	$equipes = $equipes_obj->readAll();
 
+	$equipesmatch_obj = new EquipeMatchManager();
+	$equipesmatch = $equipesmatch_obj->readAll();
+
 	$arbitres_obj = new ArbitreManager();
 	$arbitres = $arbitres_obj->readAll();
 
 	$joueurs_obj = new JoueurManager();
 	$joueurs = $joueurs_obj->readAll();
+
+	$match_obj = new FeuilleMatchManager();
+	$matchs = $match_obj->readAll();
 
 	$view = "vue_init_feuille_match";
 
@@ -81,4 +87,32 @@
 		//Création de l'arbitrage match en bdd
 		$emm = new ArbitrageMatchManager();
 		$emm->createArbitrageMatch($am);
+	}
+
+	if(isset($_POST['get_equipes'])){
+    $tab = [];
+    foreach($equipes as $equipe){
+      array_push($tab,array('id'=>$equipe->getid_equipe(),'nom'=>$equipe->getnom_club(),'ville'=>$equipe->getville_club(),'stade'=>$equipe->getstade_club()));
+    }
+    echo json_encode($tab);
+	}
+	if(isset($_POST['get_arbitres'])){
+    $tab = [];
+    foreach($arbitres as $arbitre){
+      array_push($tab,array('id'=>$arbitre->getid_arbitre(),'nom'=>$arbitre->getnom_arbitre(),'prenom'=>$arbitre->getprenom_arbitre()));
+    }
+    echo json_encode($tab);
+	}
+	if(isset($_POST['get_matchs'])){
+    $tab = [];
+    foreach($matchs as $match){
+    	$equipe_dom;
+    	$equipe_ext;
+	    foreach($equipesmatch as $equipes_){
+	      if($match->getid_match()==$equipes_->getid_match()){
+	      	array_push($tab,array('id_equipe_dom'=>$equipes_->getequipe_domicile(),'id_equipe_ext'=>$equipes_->getequipe_exterieur(),'date'=>$match->getdate_match()));
+	      }
+	    } 
+    }
+    echo json_encode($tab);
 	}

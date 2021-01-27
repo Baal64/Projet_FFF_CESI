@@ -13,6 +13,10 @@
 	$arbitres_obj = new ArbitreManager();
 	$arbitres = $arbitres_obj->readAll();
 
+
+	$match_obj = new FeuilleMatchManager();
+	$matchs = $match_obj->readAll();
+
 	if(isset($_POST['modif_feuille_match']) || isset($_POST['modification_feuille_match'])){
 		$id_match = isset($_POST['modif_feuille_match']) ? $_POST['modif_feuille_match'] : $_POST['modification_feuille_match'];
 
@@ -78,4 +82,18 @@
 		//Création de l'arbitrage match en bdd
 		$emm = new ArbitrageMatchManager();
 		$emm->updateArbitrageMatch($am);
+	}
+
+	if(isset($_POST['get_matchs'])){
+    $tab = [];
+    foreach($matchs as $match){
+    	$equipe_dom;
+    	$equipe_ext;
+	    foreach($equipesmatch as $equipes_){
+	      if($match->getid_match()==$equipes_->getid_match()){
+	      	array_push($tab,array('id_equipe_dom'=>$equipes_->getequipe_domicile(),'id_equipe_ext'=>$equipes_->getequipe_exterieur(),'date'=>$match->getdate_match()));
+	      }
+	    } 
+    }
+    echo json_encode($tab);
 	}

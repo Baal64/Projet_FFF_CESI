@@ -36,15 +36,15 @@
                           foreach ($listematchs as $match){
                             $equipedom = NULL;
                             $equipeext = NULL;
+                            $matchid = NULL;
                             foreach ($listeinfosmatch as $infosmatch){
                                 if ($infosmatch['id_match']==$match->getid_match()){
+                                    $matchid = $infosmatch['id_match'];
                                     $equipedom = $infosmatch['equipe_domicile'];
                                     $equipeext = $infosmatch['equipe_exterieur'];
+                                    echo "<option value='".$matchid."'>".$equipedom.' / '.$equipeext.' '.$match->getdate_match()."</option>";
                                 }
                             }
-                            if($equipedom!=NULL && $equipeext!=NULL){
-                              echo "<option value='".$match->getid_match()."'>".$equipedom.' / '.$equipeext.' '.$match->getdate_match()."</option>";
-                           }
                          }
                         ?>
                         </select>

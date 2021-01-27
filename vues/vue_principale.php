@@ -11,10 +11,12 @@
 		<!-- Inclusion des js -->
 		<script type="text/javascript" src="./public/js/libs/jquery-3.5.1.min.js"></script>
 		<script type="text/javascript" src="./public/js/libs/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="./public/js//fonctions.js"></script>
 	</head>
 	<body>
 		<div id="wrapper" class="flex flex_col">
 			<?php require_once('./vues/vue_header.php'); ?>
+			<div id="dialog-confirm"><p></p></div>
 			<div id="content" class="flex flex_sa flex_aic">
 				<?php
 						require_once("./vues/$view.php");

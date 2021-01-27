@@ -13,12 +13,20 @@ spl_autoload_register('chargerClass');
 
 if(isset($_POST['select_feuille_match'])){
 	$id_match = $_POST['select_feuille_match'];
+	$joueurMatchManager = new JoueurMatchManager();
+	$joueurMatchCollection = $joueurMatchManager->readByMatch($id_match);
+	var_dump($joueurMatchCollection);
 }
 
 $equipeId = $connected_user['id_equipe_entraineur'];
 
 $joueurManager = new joueurManager();
 $joueurCollection = $joueurManager->readByEquipe($equipeId);
+
+$equipeManager = new EquipeManager();
+$equipe = $equipeManager->read($equipeId);
+
+
 $listePostes = array('Attaquant', 'Ailier', 'Milieu offensif', 'Milieu', 'Milieu défensif', 'Défenseur', 'Gardien');
 
 $listePlacements = array('Centre', 'Droit', 'Gauche');
