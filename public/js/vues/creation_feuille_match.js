@@ -10,6 +10,7 @@ $(function() {
   });
   $.post('./controleurs/creation_feuille_match.php',{'get_matchs':''},function(data){
       matchs = JSON.parse(data);
+      console.log(matchs);
   });
 
 	//Configurtation du tdatepicker
@@ -38,7 +39,7 @@ $(function() {
       var send_form = true;
       var tab_equipes_indispo = [];
       for(var i =0; i<matchs.length; i++){
-        if((matchs[i]['id_equipe_dom']==$.trim($('#select_equipe_domicile').val()) || matchs[i]['id_equipe_ext']==$.trim($('#select_equipe_exterieur').val())) || (matchs[i]['id_equipe_dom']==$.trim($('#select_equipe_exterieur').val()) || matchs[i]['id_equipe_ext']==$.trim($('#select_equipe_domicile').val())) && matchs[i]['date']==format_date($.trim($('#date_match').val()))){
+        if(((matchs[i]['id_equipe_dom']==$.trim($('#select_equipe_domicile').val()) || matchs[i]['id_equipe_ext']==$.trim($('#select_equipe_exterieur').val())) || (matchs[i]['id_equipe_dom']==$.trim($('#select_equipe_exterieur').val()) || matchs[i]['id_equipe_ext']==$.trim($('#select_equipe_domicile').val()))) && matchs[i]['date']==format_date($.trim($('#date_match').val()))){
           
           if(matchs[i]['id_equipe_dom']==$.trim($('#select_equipe_domicile').val()))
             if($.inArray($.trim($('#select_equipe_domicile option:selected').text()),tab_equipes_indispo)==-1)

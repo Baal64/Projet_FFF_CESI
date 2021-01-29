@@ -36,7 +36,6 @@ $(function() {
     dateFormat: "dd/mm/yy"
   });
 
-
   set_selects_dynamic();
 
   function check_and_send(){
@@ -50,10 +49,8 @@ $(function() {
       tab_equipes_temps.push($('#select_equipe_exterieur').val());
       tab_equipes_temps = tab_equipes_temps.sort();
 
-      console.log(date_changed,(equipes_init.toString()!=tab_equipes_temps.toString()));
-
       for(var i =0; i<matchs.length; i++){
-        if(((matchs[i]['id_equipe_dom']==$.trim($('#select_equipe_domicile').val()) || matchs[i]['id_equipe_ext']==$.trim($('#select_equipe_exterieur').val())) || (matchs[i]['id_equipe_dom']==$.trim($('#select_equipe_exterieur').val()) || matchs[i]['id_equipe_ext']==$.trim($('#select_equipe_domicile').val())) && matchs[i]['date']==format_date($.trim($('#date_match').val()))) && (date_changed || equipes_init.toString()!=tab_equipes_temps.toString())){
+        if((((matchs[i]['id_equipe_dom']==$.trim($('#select_equipe_domicile').val()) || matchs[i]['id_equipe_ext']==$.trim($('#select_equipe_exterieur').val())) || (matchs[i]['id_equipe_dom']==$.trim($('#select_equipe_exterieur').val()) || matchs[i]['id_equipe_ext']==$.trim($('#select_equipe_domicile').val()))) && matchs[i]['date']==format_date($.trim($('#date_match').val()))) && date_changed){
           
           if(matchs[i]['id_equipe_dom']==$.trim($('#select_equipe_domicile').val()))
             if($.inArray($.trim($('#select_equipe_domicile option:selected').text()),tab_equipes_indispo)==-1)
@@ -71,6 +68,23 @@ $(function() {
             if($.inArray($.trim($('#select_equipe_domicile option:selected').text()),tab_equipes_indispo)==-1)
               tab_equipes_indispo.push($.trim($('#select_equipe_domicile option:selected').text()));
           send_form = false;
+        }
+      }
+      if(equipes_init.toString()==tab_equipes_temps.toString() && !date_changed)
+        send_form = true;
+      if(equipes_init.toString()==(tab_equipes_temps.reverse()).toString() && !date_changed){
+        send_form = true;
+      }
+      if(send_form && (equipes_init.toString()!=tab_equipes_temps.toString() || equipes_init.toString()!=(tab_equipes_temps.reverse()).toString()) && !date_changed){
+        for(var i =0; i<matchs.length; i++){
+          if(matchs[i]['id_equipe_dom']==equipes_init[0] && $.trim($('#select_equipe_domicile').val())==equipes_init[0] && matchs[i]['id_equipe_ext']==$.trim($('#select_equipe_exterieur').val()) && $.trim($('#select_equipe_exterieur').val())!=equipes_init[1] && matchs[i]['date']==format_date($.trim($('#date_match').val()))){
+            tab_equipes_indispo.push($.trim($('#select_equipe_exterieur option:selected').text()));
+            send_form = false;
+          }
+          if(matchs[i]['id_equipe_ext']==equipes_init[1] && $.trim($('#select_equipe_exterieur').val())==equipes_init[1] && matchs[i]['id_equipe_dom']==$.trim($('#select_equipe_domicile').val()) && $.trim($('#select_equipe_domicile').val())!=equipes_init[0] && matchs[i]['date']==format_date($.trim($('#date_match').val()))){
+            tab_equipes_indispo.push($.trim($('#select_equipe_domicile option:selected').text()));
+            send_form = false;
+          }
         }
       }
       if(!send_form){
